@@ -660,6 +660,389 @@
       font-weight: 750;
     }
 
+    .feature-story {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 28px;
+      padding: clamp(24px, 4vw, 44px);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(250, 204, 21, 0.12), transparent 45%),
+        linear-gradient(315deg, rgba(34, 211, 238, 0.1), transparent 40%),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-label {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .feature-story h3 {
+      max-width: 760px;
+      margin: 15px 0 18px;
+      font-size: clamp(38px, 6vw, 78px);
+      line-height: 0.94;
+      text-transform: uppercase;
+    }
+
+    .feature-deck {
+      max-width: 760px;
+      margin: 0;
+      color: #d6e1ef;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .feature-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-content: start;
+    }
+
+    .feature-stat {
+      min-height: 116px;
+      padding: 18px;
+      border-top: 4px solid var(--accent, var(--cyan));
+      background: rgba(4, 10, 18, 0.56);
+    }
+
+    .feature-stat b {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .feature-stat span {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .top-five-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .top-five-card {
+      position: relative;
+      min-height: 285px;
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .top-five-card:first-child {
+      border-color: rgba(250, 204, 21, 0.42);
+      background: linear-gradient(145deg, rgba(250, 204, 21, 0.14), transparent 52%), var(--panel);
+    }
+
+    .top-five-rank {
+      color: var(--gold);
+      font-size: 43px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .top-five-card h3 {
+      margin: 22px 0 8px;
+      font-size: 22px;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .top-five-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .top-five-footer {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .top-five-footer small {
+      color: var(--muted);
+      font-weight: 850;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .story-card {
+      min-height: 300px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .story-card:nth-child(1) {
+      border-top: 5px solid var(--gold);
+    }
+
+    .story-card:nth-child(2) {
+      border-top: 5px solid var(--rose);
+    }
+
+    .story-card:nth-child(3) {
+      border-top: 5px solid var(--cyan);
+    }
+
+    .story-card small {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .story-card h3 {
+      margin: 22px 0 14px;
+      font-size: 28px;
+      line-height: 1.08;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .title-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 120px;
+      padding: 20px;
+      border-left: 5px solid var(--gold);
+      background: var(--panel);
+    }
+
+    .title-row.vacant {
+      border-left-color: #63758a;
+    }
+
+    .title-row small {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .title-row h3 {
+      margin: 7px 0 0;
+      font-size: 23px;
+      text-transform: uppercase;
+    }
+
+    .title-row p {
+      margin: 0;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.45;
+    }
+
+    .result-card {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) minmax(220px, 0.55fr);
+      gap: 22px;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--cyan);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .result-card.main-event {
+      border-left-color: var(--gold);
+      background: linear-gradient(90deg, rgba(250, 204, 21, 0.09), transparent 40%), var(--panel);
+    }
+
+    .result-card h3 {
+      margin: 4px 0 7px;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .result-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .result-summary strong {
+      color: var(--lime);
+    }
+
+    .award-note {
+      color: var(--gold) !important;
+      font-weight: 850;
+    }
+
+    .roster-toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .roster-search {
+      width: min(420px, 100%);
+      min-height: 48px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .roster-search:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+    }
+
+    .roster-directory {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .roster-entry {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      min-height: 118px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .roster-entry .fighter-avatar {
+      width: 54px;
+      height: 54px;
+      font-size: 16px;
+    }
+
+    .roster-entry h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+    }
+
+    .roster-entry p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .roster-rank {
+      min-width: 70px;
+      text-align: right;
+    }
+
+    .roster-rank b {
+      display: block;
+      color: var(--gold);
+      font-size: 21px;
+    }
+
+    .roster-rank span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 30px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .feature-story {
+        grid-template-columns: 1fr;
+      }
+
+      .top-five-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 860px) {
+      .top-five-grid,
+      .story-grid,
+      .title-list,
+      .roster-directory {
+        grid-template-columns: 1fr;
+      }
+
+      .result-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .feature-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-story h3 {
+        font-size: 42px;
+      }
+
+      .roster-entry {
+        grid-template-columns: 48px minmax(0, 1fr);
+      }
+
+      .roster-rank {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        text-align: left;
+      }
+    }
+
     @media (max-width: 1100px) {
       .champion-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -834,10 +1217,11 @@
     </button>
     <nav class="jump-menu" id="jump-menu" aria-label="Jump section menu">
       <a href="#home">Home</a>
-      <a href="#champions">Champions</a>
-      <a href="#rankings">Rankings</a>
+      <a href="#spotlight">P4P Best</a>
+      <a href="#rankings">Top 5</a>
+      <a href="#stories">Articles</a>
+      <a href="#matches">Results</a>
       <a href="#roster">Roster</a>
-      <a href="#matches">Matches</a>
       <a href="https://github.com/ProfessorZoom45/UPJFC">GitHub</a>
     </nav>
   </header>
@@ -848,12 +1232,12 @@
       <h1 id="page-title">UPJFC</h1>
       <p class="hero-copy">
         The online hub for Unprovoked Jabs Fighting Championship's EA Sports UFC 6 AI vs AI league.
-        Explore current champions, power rankings, roster bios, and official match results from UPJFC001.
+        Follow the fighters, stories, rankings, and results shaping the league after UPJFC001.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="#rankings">View Power Rankings</a>
+        <a class="button primary" href="#spotlight">Meet the P4P Best</a>
+        <a class="button" href="#rankings">View the Top 5</a>
         <a class="button gold" href="#matches">UPJFC001 Results</a>
-        <a class="button" href="https://docs.google.com/spreadsheets/d/1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM/edit">Open Source Sheet</a>
       </div>
       <div class="sync-status" id="sync-status" role="status" aria-live="polite">
         <span class="sync-dot" aria-hidden="true"></span>
@@ -864,58 +1248,73 @@
   </section>
 
   <main>
-    <section class="section" id="champions">
+    <section class="section" id="spotlight">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">Title holders</span>
-          <h2>Champions</h2>
+          <span class="section-kicker">Fighter spotlight</span>
+          <h2>Pound-for-Pound Best</h2>
         </div>
-        <p>Current title status pulled from the CHAMPIONS tab. Vacant championships remain open until a fighter is selected in the sheet.</p>
+        <p>The current standard bearer, selected from the Pound For Pound championship and live power rankings.</p>
       </div>
-      <div class="champion-grid" id="champion-grid"></div>
+      <article class="feature-story" id="p4p-feature"></article>
     </section>
 
     <section class="section alt" id="rankings">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">Current top ten</span>
-          <h2>Power Rankings</h2>
+          <span class="section-kicker">League leaders</span>
+          <h2>Top 5 Fighters</h2>
         </div>
-        <p>Scores combine completed matches, finishes, decisions, bonuses, championships, and streak performance from the live ranking model.</p>
+        <p>The five fighters with the strongest current power scores, presented as profiles instead of a spreadsheet table.</p>
       </div>
-      <div class="ranking-shell">
-        <table class="ranking-table">
-          <thead>
-            <tr>
-              <th>Rank</th><th>Fighter</th><th>Class</th><th>Record</th><th>Finish %</th><th>Streak</th><th>Power Score</th><th>Scale</th>
-            </tr>
-          </thead>
-          <tbody id="ranking-body"></tbody>
-        </table>
-      </div>
-      <div class="ranking-cards" id="ranking-cards"></div>
+      <div class="top-five-grid" id="top-five"></div>
     </section>
 
-    <section class="section" id="roster">
+    <section class="section" id="stories">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">28 active profiles</span>
-          <h2>Roster &amp; Bios</h2>
+          <span class="section-kicker">From UPJFC001</span>
+          <h2>Fight Stories</h2>
         </div>
-        <p>Each profile combines roster measurements, archetype, sub-archetype, posture, AI style, record, rank, and power score.</p>
+        <p>The defining performances and themes from the league's first official event in Las Vegas.</p>
       </div>
-      <div class="roster-grid" id="roster-grid"></div>
+      <div class="story-grid" id="story-grid"></div>
     </section>
 
-    <section class="section alt" id="matches">
+    <section class="section alt" id="champions">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Championship outlook</span>
+          <h2>The Title Picture</h2>
+        </div>
+        <p>Who holds the gold now, and which championships remain open for the next wave of contenders.</p>
+      </div>
+      <div class="title-list" id="champion-grid"></div>
+    </section>
+
+    <section class="section" id="matches">
       <div class="section-heading">
         <div>
           <span class="section-kicker">T-Mobile Arena, Las Vegas</span>
-          <h2>UPJFC001 Results</h2>
+          <h2>Official Results</h2>
         </div>
-        <p>Official results from the MATCH DATABASE tab, including card position, finish, round, time, and event bonuses.</p>
+        <p>Every UPJFC001 result rewritten as a clear fight recap with the winner, method, round, time, and awards.</p>
       </div>
       <div class="match-list" id="match-list"></div>
+    </section>
+
+    <section class="section alt" id="roster">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Fighter directory</span>
+          <h2>Meet the Roster</h2>
+        </div>
+        <p>Short, readable profiles built from each fighter's class, measurements, archetype, AI style, record, rank, and power score.</p>
+      </div>
+      <div class="roster-toolbar">
+        <input class="roster-search" id="roster-search" type="search" placeholder="Search fighters, classes, or styles" aria-label="Search roster">
+      </div>
+      <div class="roster-directory" id="roster-grid"></div>
     </section>
   </main>
 
@@ -1175,80 +1574,136 @@
         </div>`).join("");
     }
 
+    function fighterProfile(name) {
+      return UPJFC_DATA.roster.find((fighter) => fighter.name === name) || null;
+    }
+
+    function renderP4P() {
+      const titleHolder = UPJFC_DATA.champions.find((item) =>
+        item.title.toLowerCase().includes("pound for pound") && item.fighter !== "Vacant");
+      const ranked = titleHolder
+        ? UPJFC_DATA.rankings.find((item) => item.fighter === titleHolder.fighter)
+        : UPJFC_DATA.rankings[0];
+      const leader = ranked || UPJFC_DATA.rankings[0];
+      const profile = fighterProfile(leader.fighter);
+      const signatureWin = UPJFC_DATA.matches.find((match) => match.winner === leader.fighter);
+      const style = profile ? `${profile.archetype} with a ${profile.subArchetype} approach` : leader.className;
+      const resultLine = signatureWin
+        ? `His latest statement came against ${signatureWin.loser}, ending by ${signatureWin.finish || signatureWin.condition} in round ${signatureWin.round} at ${signatureWin.time}.`
+        : "He currently owns the strongest overall power score in the league.";
+
+      document.querySelector("#p4p-feature").innerHTML = `
+        <div>
+          <span class="feature-label">Pound For Pound Champion</span>
+          <h3>${esc(leader.fighter)}</h3>
+          <p class="feature-deck">${esc(leader.fighter)} sets the early UPJFC standard as a ${esc(style)}. A ${esc(leader.record)} record, ${esc(leader.finishPct)} finish rate, and ${esc(leader.power.toFixed(1))} power score put him at the front of the league after its opening event.</p>
+          <p class="feature-deck" style="margin-top:16px">${esc(resultLine)}</p>
+        </div>
+        <div class="feature-stats">
+          <div class="feature-stat" style="--accent:var(--gold)"><b>#${esc(leader.rank)}</b><span>Power Rank</span></div>
+          <div class="feature-stat" style="--accent:var(--lime)"><b>${esc(leader.power.toFixed(1))}</b><span>Power Score</span></div>
+          <div class="feature-stat" style="--accent:var(--cyan)"><b>${esc(leader.record)}</b><span>Record</span></div>
+          <div class="feature-stat" style="--accent:var(--rose)"><b>${esc(leader.streak || "-")}</b><span>Current Streak</span></div>
+        </div>`;
+    }
+
+    function renderTopFive() {
+      document.querySelector("#top-five").innerHTML = UPJFC_DATA.rankings.slice(0, 5).map((item) => {
+        const profile = fighterProfile(item.fighter);
+        const description = profile
+          ? `${profile.className} ${profile.archetype.toLowerCase()} with a ${profile.subArchetype.toLowerCase()} identity.`
+          : `${item.className} contender building momentum.`;
+        return `
+          <article class="top-five-card">
+            <div class="top-five-rank">#${esc(item.rank)}</div>
+            <h3>${esc(item.fighter)}</h3>
+            <p>${esc(description)}</p>
+            <div class="top-five-footer">
+              <small>${esc(item.record)} | ${esc(item.streak || "No streak")}</small>
+              <span class="score">${esc(item.power.toFixed(1))}</span>
+            </div>
+          </article>`;
+      }).join("");
+    }
+
+    function renderStories() {
+      const mainEvent = UPJFC_DATA.matches.find((match) => match.position === "Main Event") || UPJFC_DATA.matches[0];
+      const knockout = UPJFC_DATA.matches.find((match) => /KO|TKO/i.test(match.condition) || /KO/i.test(match.note));
+      const decisions = UPJFC_DATA.matches.filter((match) => /Decision/i.test(match.condition));
+      const decisionWinners = decisions.map((match) => match.winner).join(", ");
+      const stories = [
+        {
+          label: "Main Event",
+          headline: `${mainEvent.winner} delivers when the lights are brightest`,
+          body: `${mainEvent.winner} closed the headline bout against ${mainEvent.loser} by ${mainEvent.finish || mainEvent.condition} in round ${mainEvent.round} at ${mainEvent.time}, immediately establishing a place near the top of the rankings.`
+        },
+        knockout ? {
+          label: "Breakout Performance",
+          headline: `${knockout.winner} turns a finish into the night's biggest leap`,
+          body: `${knockout.winner} stopped ${knockout.loser} with ${String(knockout.finish || knockout.condition).toLowerCase()} in the third round. The finish, Fight of the Night recognition, and performance bonus helped drive the league's highest power score.`
+        } : null,
+        {
+          label: "Card Story",
+          headline: `${decisions.length} decisions reward patience and control`,
+          body: `${decisionWinners || "The judges"} earned wins on the scorecards. Those results shaped the middle of the first rankings and created an early group of unbeaten contenders.`
+        }
+      ].filter(Boolean);
+
+      document.querySelector("#story-grid").innerHTML = stories.map((story) => `
+        <article class="story-card">
+          <small>${esc(story.label)}</small>
+          <h3>${esc(story.headline)}</h3>
+          <p>${esc(story.body)}</p>
+        </article>`).join("");
+    }
+
     function renderChampions() {
       document.querySelector("#champion-grid").innerHTML = UPJFC_DATA.champions.map((item) => {
         const vacant = item.fighter === "Vacant";
         return `
-          <article class="champion-card${vacant ? " vacant" : ""}">
-            <small>${esc(item.title)}</small>
-            <h3>${esc(item.fighter)}</h3>
-            <p>${vacant ? "Title currently unassigned" : `${esc(item.className)} | ${esc(item.record)} | Power ${esc(item.power)}`}</p>
+          <article class="title-row${vacant ? " vacant" : ""}">
+            <div><small>${esc(item.title)}</small><h3>${esc(item.fighter)}</h3></div>
+            <p>${vacant ? "Open championship" : `${esc(item.className)}<br>${esc(item.record)} record | ${esc(item.power)} power`}</p>
           </article>`;
       }).join("");
     }
 
-    function renderRankings() {
-      const topTen = UPJFC_DATA.rankings.slice(0, 10);
-      document.querySelector("#ranking-body").innerHTML = topTen.map((item) => `
-        <tr>
-          <td class="rank-number">#${esc(item.rank)}</td>
-          <td class="fighter-name">${esc(item.fighter)}</td>
-          <td>${esc(item.className)}</td>
-          <td>${esc(item.record)}</td>
-          <td>${esc(item.finishPct)}</td>
-          <td>${esc(item.streak || "-")}</td>
-          <td><span class="score${item.power < 0 ? " negative" : ""}">${esc(item.power.toFixed(1))}</span></td>
-          <td>${esc(item.scale)}</td>
-        </tr>`).join("");
+    function renderRoster(query = "") {
+      const term = query.trim().toLowerCase();
+      const fighters = UPJFC_DATA.roster.filter((fighter) => [
+        fighter.name, fighter.className, fighter.archetype, fighter.subArchetype, fighter.aiStyle
+      ].some((value) => String(value).toLowerCase().includes(term)));
 
-      document.querySelector("#ranking-cards").innerHTML = topTen.map((item) => `
-        <article class="ranking-card">
-          <span class="rank-number">#${esc(item.rank)}</span>
-          <div><h3>${esc(item.fighter)}</h3><p>${esc(item.className)} | ${esc(item.record)} | ${esc(item.streak || "No streak")}</p></div>
-          <span class="score${item.power < 0 ? " negative" : ""}">${esc(item.power.toFixed(1))}</span>
-        </article>`).join("");
-    }
-
-    function renderRoster() {
-      document.querySelector("#roster-grid").innerHTML = UPJFC_DATA.roster.map((fighter) => {
+      document.querySelector("#roster-grid").innerHTML = fighters.length ? fighters.map((fighter) => {
         const ranking = rankingByName.get(fighter.name);
         const record = ranking ? ranking.record : `${fighter.wins}-${fighter.losses}`;
-        const bio = `${fighter.height}, ${fighter.weight} lb ${fighter.className}. ${fighter.archetype} / ${fighter.subArchetype} profile using ${fighter.aiStyle} AI behavior and the ${fighter.posture} posture.`;
+        const profile = `${fighter.height}, ${fighter.weight} lb ${fighter.className}. ${fighter.archetype} / ${fighter.subArchetype}, modeled with ${fighter.aiStyle} AI behavior.`;
         return `
-          <article class="fighter-card">
+          <article class="roster-entry">
             <div class="fighter-avatar">${esc(initials(fighter.name))}</div>
-            <div>
-              <p class="fighter-meta">#${esc(ranking?.rank || "-")} ${esc(fighter.className)}</p>
-              <h3>${esc(fighter.name)}</h3>
-              <span class="score${ranking && ranking.power < 0 ? " negative" : ""}">${esc((ranking?.power ?? 0).toFixed(1))}</span>
-            </div>
-            <p class="fighter-bio">${esc(bio)}</p>
-            <div class="fighter-stats">
-              <div class="mini-stat"><b>${esc(record)}</b><span>Record</span></div>
-              <div class="mini-stat"><b>${esc(fighter.archetype)}</b><span>Archetype</span></div>
-              <div class="mini-stat"><b>${esc(fighter.subArchetype)}</b><span>Sub Arch</span></div>
-              <div class="mini-stat"><b>${esc(ranking?.streak || "-")}</b><span>Streak</span></div>
-            </div>
+            <div><h3>${esc(fighter.name)}</h3><p>${esc(profile)}</p></div>
+            <div class="roster-rank"><b>#${esc(ranking?.rank || "-")}</b><span>${esc(record)} | ${esc((ranking?.power ?? 0).toFixed(1))} power</span></div>
           </article>`;
-      }).join("");
+      }).join("") : '<div class="empty-state">No fighters match that search.</div>';
     }
 
     function renderMatches() {
       document.querySelector("#match-list").innerHTML = UPJFC_DATA.matches.map((match) => `
-        <article class="match-card${match.position === "Main Event" ? " main-event" : ""}">
-          <div><span class="match-id">${esc(match.id)}</span><div class="match-note">${esc(match.position)}<br>${esc(match.division)}</div></div>
-          <div><h3>${esc(match.blue)} vs ${esc(match.red)}</h3><div class="match-result"><span class="winner">${esc(match.winner)}</span> defeated ${esc(match.loser)}</div></div>
-          <div class="match-result">${esc(match.condition)} | ${esc(match.finish)}${match.note ? `<br><strong>${esc(match.note)}</strong>` : ""}</div>
-          <div class="match-round"><strong>R${esc(match.round)} ${esc(match.time)}</strong><span>${esc(match.status)}</span></div>
+        <article class="result-card${match.position === "Main Event" ? " main-event" : ""}">
+          <div><span class="match-id">${esc(match.id)}</span><p>${esc(match.position)}<br>${esc(match.division)}</p></div>
+          <div><h3>${esc(match.blue)} vs ${esc(match.red)}</h3><p class="result-summary"><strong>${esc(match.winner)}</strong> defeated ${esc(match.loser)} by ${esc(match.finish || match.condition)} in round ${esc(match.round)} at ${esc(match.time)}.</p></div>
+          <div>${match.note ? `<p class="award-note">${esc(match.note)}</p>` : `<p>${esc(match.status)}</p>`}</div>
         </article>`).join("");
     }
 
     function renderAll() {
       rankingByName = new Map(UPJFC_DATA.rankings.map((item) => [item.fighter, item]));
       renderStats();
+      renderP4P();
+      renderTopFive();
+      renderStories();
       renderChampions();
-      renderRankings();
-      renderRoster();
+      renderRoster(document.querySelector("#roster-search")?.value || "");
       renderMatches();
     }
 
@@ -1315,8 +1770,14 @@
       });
     }
 
+    function setupRosterSearch() {
+      const input = document.querySelector("#roster-search");
+      input.addEventListener("input", () => renderRoster(input.value));
+    }
+
     renderAll();
     setupMenu();
+    setupRosterSearch();
     syncFromSheets();
     window.setInterval(syncFromSheets, REFRESH_INTERVAL_MS);
   </script>
