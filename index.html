@@ -1,0 +1,1079 @@
+Exit code: 0
+Wall time: 1.1 seconds
+Total output lines: 1097
+Output:
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UPJFC is the online hub for Unprovoked Jabs Fighting Championship's EA Sports UFC 6 AI vs AI league, with roster bios, power rankings, champions, and match history.">
+  <title>UPJFC | Unprovoked Jabs Fighting Championship</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f8fbff;
+      --muted: #aebed2;
+      --navy: #07111f;
+      --navy-2: #0b1728;
+      --panel: #101d31;
+      --panel-2: #14243b;
+      --cyan: #22d3ee;
+      --lime: #a3e635;
+      --gold: #facc15;
+      --rose: #fb7185;
+      --violet: #a78bfa;
+      --line: rgba(255, 255, 255, 0.15);
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--navy);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      right: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 72px;
+      padding: 12px clamp(18px, 4vw, 64px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 17, 31, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--lime) 48%, var(--gold));
+      color: #04111d;
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.28);
+      font-size: 15px;
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .brand-copy small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .jump-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .jump-menu a,
+    .button {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 850;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .jump-menu a:hover,
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(34, 211, 238, 0.7);
+      background: rgba(34, 211, 238, 0.14);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      border-radius: 99px;
+      background: currentColor;
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .menu-toggle span + span {
+      margin-top: 5px;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 84vh;
+      align-items: end;
+      padding: 120px clamp(18px, 5vw, 72px) 64px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(4, 12, 23, 0.98), rgba(7, 17, 31, 0.83) 48%, rgba(7, 17, 31, 0.54)),
+        linear-gradient(180deg, transparent 58%, var(--navy) 100%),
+        url("https://opengraph.githubassets.com/upjfc-live/ProfessorZoom45/UPJFC");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 9px;
+      background: linear-gradient(90deg, var(--cyan), var(--lime), var(--gold), var(--rose), var(--violet));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1040px, 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--cyan);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(64px, 12vw, 158px);
+      line-height: 0.84;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+      margin: 24px 0 0;
+      color: #d5e0ee;
+      font-size: clamp(18px, 2.3vw, 24px);
+      font-weight: 650;
+      line-height: 1.45;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button.primary {
+      border: 0;
+      background: linear-gradient(135deg, var(--cyan), var(--lime));
+      color: #04111d;
+    }
+
+    .button.gold {
+      border-color: rgba(250, 204, 21, 0.5);
+      background: rgba(250, 204, 21, 0.14);
+      color: #fff4a6;
+    }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .hero-stat {
+      min-height: 82px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent, var(--cyan));
+      background: rgba(5, 12, 23, 0.76);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    main {
+      background: var(--navy);
+    }
+
+    .section {
+      scroll-margin-top: 82px;
+      padding: clamp(52px, 7vw, 92px) clamp(18px, 5vw, 72px);
+    }
+
+    .section.alt {
+      background:
+        linear-gradient(125deg, rgba(34, 211, 238, 0.08), transparent 35%),
+        linear-gradient(235deg, rgba(251, 113, 133, 0.08), transparent 34%),
+        var(--navy-2);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .champion-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .champion-card {
+      position: relative;
+      min-height: 190px;
+      padding: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(250, 204, 21, 0.25);
+      border-radius: 8px;
+      background: linear-gradient(150deg, rgba(250, 204, 21, 0.13), transparent 55%), var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .champion-card.vacant {
+      border-color: var(--line);
+      background: var(--panel);
+    }
+
+    .champion-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: var(--gold);
+    }
+
+    .champion-card.vacant::before {
+      background: #5b6b7e;
+    }
+
+    .champion-card small {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .champion-card h3 {
+      margin: 28px 0 8px;
+      font-size: 25px;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .champion-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .ranking-shell {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .ranking-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ranking-table th,
+    .ranking-table td {
+      padding: 16px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .ranking-table th {
+      background: #091525;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .ranking-table tbody tr:hover {
+      background: rgba(34, 211, 238, 0.07);
+    }
+
+    .rank-number {
+      color: var(--gold);
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .fighter-name {
+      font-weight: 900;
+    }
+
+    .score {
+      display: inline-flex;
+      min-width: 64px;
+      justify-content: center;
+      padding: 6px 9px;
+      border-radius: 6px;
+      background: rgba(163, 230, 53, 0.13);
+      color: var(--lime);
+      font-weight: 950;
+    }
+
+    .score.negative {
+      background: rgba(251, 113, 133, 0.12);
+      color: var(--rose);
+    }
+
+    .ranking-cards {
+      display: none;
+    }
+
+    .roster-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .fighter-card {
+      display: grid;
+      grid-template-columns: 62px minmax(0, 1fr);
+      gap: 16px;
+      min-height: 220px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .fighter-avatar {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: #07111f;
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .fighter-card h3 {
+      margin: 1px 0 6px;
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .fighter-meta {
+      margin: 0;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .fighter-bio {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .fighter-stats {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .mini-stat {
+      padding: 9px 8px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      text-align: center;
+    }
+
+    .mini-stat b {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .mini-stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .match-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .match-card {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1.3fr) minmax(0, 1fr) 150px;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--accent, var(--cyan));
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .match-card.main-event {
+      --accent: var(--gold);
+      background: linear-gradient(90deg, rgba(250, 204, 21, 0.1), transparent 45%), var(--panel);
+    }
+
+    .match-id {
+      color: var(--accent, var(--cyan));
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .match-card h3 {
+      margin: 4px 0 0;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .winner {
+      color: var(--lime);
+      font-weight: 900;
+    }
+
+    .match-result,
+    .match-note {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .match-round {
+      text-align: right;
+    }
+
+    .match-round strong {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .match-round span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .source-band {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 26px clamp(18px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #07111f;
+    }
+
+    .source-band p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 28px clamp(18px, 5vw, 72px);
+      background: #040a12;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    @media (max-width: 1100px) {
+      .champion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .roster-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .match-card {
+        grid-template-columns: 100px minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .match-round {
+        grid-column: 3;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .topbar {
+        min-height: 68px;
+        padding: 10px 16px;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .jump-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 16px;
+        left: 16px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 9px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(4, 10, 18, 0.98);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px) scale(0.98);
+        transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+        visibility: hidden;
+      }
+
+      .jump-menu.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+      }
+
+      .jump-menu a {
+        min-height: 48px;
+        justify-content: flex-start;
+        border-radius: 7px;
+      }
+
+      .hero {
+        min-height: 78vh;
+        padding-top: 110px;
+      }
+
+      .stat-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading p {
+        margin-top: 14px;
+      }
+
+      .ranking-shell {
+        display: none;
+      }
+
+      .ranking-cards {
+        display: grid;
+        gap: 10px;
+      }
+
+      .ranking-card {
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .ranking-card h3 {
+        margin: 0;
+        font-size: 17px;
+      }
+
+      .ranking-card p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .roster-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .match-card {
+        grid-template-columns: 1fr;
+      }
+
+      .match-round {
+        grid-column: auto;
+      }
+
+      .source-band {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-copy strong {
+        font-size: 14px;
+      }
+
+      .brand-copy small {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(60px, 22vw, 90px);
+      }
+
+      .hero-copy {
+        font-size: 17px;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .champion-grid,
+      .stat-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .fighter-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Primary navigation">
+    <a class="brand" href="#home" aria-label="UPJFC home">
+      <span class="brand-mark">UP</span>
+      <span class="brand-copy">
+        <strong>UPJFC</strong>
+        <small>Unprovoked Jabs Fighting Championship</small>
+      </span>
+    </a>
+    <button class="menu-toggle" type="button" aria-controls="jump-menu" aria-expanded="false" aria-label="Open jump menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="jump-menu" id="jump-menu" aria-label="Jump section menu">
+      <a href="#home">Home</a>
+      <a href="#champions">Champions</a>
+      <a href="#rankings">Rankings</a>
+      <a href="#roster">Roster</a>
+      <a href="#matches">Matches</a>
+      <a href="https://github.com/ProfessorZoom45/UPJFC">GitHub</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home" aria-labelledby="page-title">
+    <div class="hero-inner">
+      <p class="eyebrow">Google Sheets league snapshot</p>
+      <h1 id="page-title">UPJFC</h1>
+      <p class="hero-copy">
+        The online hub for Unprovoked Jabs Fighting Championship's EA Sports UFC 6 AI vs AI league.
+        Explore current champions, power rankings, roster bios, and official match results from UPJFC001.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#rankings">View Power Rankings</a>
+        <a class="button gold" href="#matches">UPJFC001 Results</a>
+        <a class="button" href="https://docs.google.com/spreadsheets/d/1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM/edit">Open Source Sheet</a>
+      </div>
+      <div class="stat-strip" id="stat-strip" aria-label="League snapshot"></div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="champions">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Title holders</span>
+          <h2>Champions</h2>
+        </div>
+        <p>Current title status pulled from the CHAMPIONS tab. Vacant championships remain open until a fighter is selected in the sheet.</p>
+      </div>
+      <div class="champion-grid" id="champion-grid"></div>
+    </section>
+
+    <section class="section alt" id="rankings">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Current top ten</span>
+          <h2>Power Rankings</h2>
+        </div>
+        <p>Scores combine completed matches, finishes, decisions, bonuses, championships, and streak performance from the live ranking model.</p>
+      </div>
+      <div class="ranking-shell">
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th>Rank</th><th>Fighter</th><th>Class</th><th>Record</th><th>Finish %</th><th>Streak</th><th>Power Score</th><th>Scale</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-body"></tbody>
+        </table>
+      </div>
+      <div class="ranking-cards" id="ranking-cards"></div>
+    </section>
+
+    <section class="section" id="roster">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">28 active profiles</span>
+          <h2>Roster &amp; Bios</h2>
+        </div>
+        <p>Each profile combines roster measurements, archetype, sub-archetype, posture, AI style, record, rank, and power s…225 tokens truncated…footer>
+    <span>UPJFC - Unprovoked Jabs Fighting Championship</span>
+    <span>EA Sports UFC 6 AI vs AI League</span>
+  </footer>
+
+  <script>
+    const UPJFC_DATA = {
+      champions: [
+        { title: "Pound For Pound Champion", fighter: "Terrance Thomas", className: "Heavyweight", record: "1-0", power: 26 },
+        { title: "Heavyweight Champion", fighter: "Vacant", className: "", record: "", power: null },
+        { title: "Light Heavyweight Champion", fighter: "Vacant", className: "", record: "", power: null },
+        { title: "Middleweight Champion", fighter: "Vacant", className: "", record: "", power: null }
+      ],
+      rankings: [
+        { rank: 1, fighter: "Terrance Thomas", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 26, scale: "Prospect" },
+        { rank: 2, fighter: "Morrese Towns", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 11, scale: "Developing" },
+        { rank: 3, fighter: "Damon Wolfe", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 8, scale: "Developing" },
+        { rank: 4, fighter: "Buren Wilder Jr", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
+        { rank: 5, fighter: "Sean Bies", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
+        { rank: 6, fighter: "Troy Goodwin", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
+        { rank: 7, fighter: "Tyree Long", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: 1, scale: "Developing" },
+        { rank: 8, fighter: "Aaron Sutton", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 9, fighter: "Allen Risner", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 10, fighter: "Anthony Williams", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 11, fighter: "Charles Velasquez", className: "Welterweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 12, fighter: "Chazz Burney", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 13, fighter: "Destin Sharp", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 14, fighter: "Devon Sutton", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 15, fighter: "Greg Earl", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 16, fighter: "Jermaine Jefferson", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 17, fighter: "Jimmy Sanchez", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 18, fighter: "Juan Ramos", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 19, fighter: "Kenneth Ramey", className: "Light Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 20, fighter: "Korey'e Dixon", className: "Welterweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 21, fighter: "Kyree Brammer", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 22, fighter: "Quincy Jackson", className: "Light Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 23, fighter: "Saman Khoshbin", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
+        { rank: 24, fighter: "Anthony Brown", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -3, scale: "Rebuild" },
+        { rank: 25, fighter: "Jonathan Servin", className: "Light Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -3, scale: "Rebuild" },
+        { rank: 26, fighter: "Maurice Sutton", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -3, scale: "Rebuild" },
+        { rank: 27, fighter: "Eric Lugo", className: "Light Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -4, scale: "Rebuild" },
+        { rank: 28, fighter: "Ray Cheers", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -4, scale: "Rebuild" }
+      ],
+      roster: [
+        { name: "Aaron Sutton", className: "Heavyweight", height: "5'10\"", weight: 265, posture: "Michael Chandler", aiStyle: "Michael Chandler", archetype: "Boxer", subArchetype: "Powerhouse", wins: 0, losses: 0, draws: 0 },
+        { name: "Allen Risner", className: "Heavyweight", height: "6'0\"", weight: 238, posture: "Jairzinho Rozenstruik", aiStyle: "Jairzinho Rozenstruik", archetype: "Kickboxer", subArchetype: "Sniper", wins: 0, losses: 0, draws: 0 },
+        { name: "Anthony Brown", className: "Heavyweight", height: "5'10\"", weight: 265, posture: "Derrick Lewis", aiStyle: "Jon Jones Heavyweight", archetype: "MMA", subArchetype: "Virtuoso", wins: 0, losses: 1, draws: 0 },
+        { name: "Anthony Williams", className: "Heavyweight", height: "6'3\"", weight: 235, posture: "Leon Edwards", aiStyle: "Leon Edwards", archetype: "MMA", subArchetype: "Engine", wins: 0, losses: 0, draws: 0 },
+        { name: "Buren Wilder Jr", className: "Heavyweight", height: "5'11\"", weight: 210, posture: "Dominick Reyes", aiStyle: "Cody Garbrandt", archetype: "Boxer", subArchetype: "Powerhouse", wins: 1, losses: 0, draws: 0 },
+        { name: "Charles Velasquez", className: "Welterweight", height: "5'9\"", weight: 160, posture: "Khamzat Chimaev", aiStyle: "Khamzat Chimaev", archetype: "Kickboxer", subArchetype: "Sniper", wins: 0, losses: 0, draws: 0 },
+        { name: "Chazz Burney", className: "Heavyweight", height: "6'1\"", weight: 210, posture: "Yair Rodriguez", aiStyle: "Yair Rodriguez", archetype: "Boxer", subArchetype: "Showboat", wins: 0, losses: 0, draws: 0 },
+        { name: "Damon Wolfe", className: "Heavyweight", height: "6'2\"", weight: 206, posture: "Jon Jones", aiStyle: "Minotauro Nogueira", archetype: "Jiu-Jitsu", subArchetype: "Vanguard", wins: 1, losses: 0, draws: 0 },
+        { name: "Destin Sharp", className: "Heavyweight", height: "6'0\"", weight: 265, posture: "Kamaru Usman", aiStyle: "Ken Shamrock", archetype: "Wrestler", subArchetype: "Smasher", wins: 0, losses: 0, draws: 0 },
+        { name: "Devon Sutton", className: "Heavyweight", height: "5'10\"", weight: 265, posture: "Justin Gaethje", aiStyle: "Justin Gaethje", archetype: "Kickboxer", subArchetype: "Razor", wins: 0, losses: 0, draws: 0 },
+        { name: "Eric Lugo", className: "Light Heavyweight", height: "5'8\"", weight: 187, posture: "Alex Pereira", aiStyle: "Ovince Saint Preux", archetype: "Kickboxer", subArchetype: "Acrobat", wins: 0, losses: 1, draws: 0 },
+        { name: "Greg Earl", className: "Heavyweight", height: "5'11\"", weight: 265, posture: "Tito Ortiz", aiStyle: "Minotauro Nogueira", archetype: "Wrestler", subArchetype: "Smasher", wins: 0, losses: 0, draws: 0 },
+        { name: "Jermaine Jefferson", className: "Heavyweight", height: "5'8\"", weight: 215, posture: "Tom Aspinall", aiStyle: "Tom Aspinall", archetype: "Jiu-Jitsu", subArchetype: "Vanguard", wins: 0, losses: 0, draws: 0 },
+        { name: "Jimmy Sanchez", className: "Heavyweight", height: "5'10\"", weight: 250, posture: "Rafael Dos Anjos", aiStyle: "Rafael Dos Anjos", archetype: "Wrestler", subArchetype: "Smasher", wins: 0, losses: 0, draws: 0 },
+        { name: "Jonathan Servin", className: "Light Heavyweight", height: "5'8\"", weight: 188, posture: "Joaquin Buckley", aiStyle: "Georges St-Pierre Legacy", archetype: "MMA", subArchetype: "Virtuoso", wins: 0, losses: 1, draws: 0 },
+        { name: "Juan Ramos", className: "Heavyweight", height: "6'2\"", weight: 225, posture: "Jared Cannonier", aiStyle: "Jared Cannonier", archetype: "Jiu-Jitsu", subArchetype: "Shark", wins: 0, losses: 0, draws: 0 },
+        { name: "Kenneth Ramey", className: "Light Heavyweight", height: "5'10\"", weight: 205, posture: "Randy Couture", aiStyle: "Randy Couture", archetype: "Boxer", subArchetype: "Pressure", wins: 0, losses: 0, draws: 0 },
+        { name: "Korey'e Dixon", className: "Welterweight", height: "5'9\"", weight: 170, posture: "Anthony Smith", aiStyle: "Anthony Smith", archetype: "Kickboxer", subArchetype: "Acrobat", wins: 0, losses: 0, draws: 0 },
+        { name: "Kyree Brammer", className: "Heavyweight", height: "6'5\"", weight: 265, posture: "Jailton Almeida", aiStyle: "Jailton Almeida", archetype: "Boxer", subArchetype: "Powerhouse", wins: 0, losses: 0, draws: 0 },
+        { name: "Maurice Sutton", className: "Heavyweight", height: "6'3\"", weight: 224, posture: "Paddy Pimblett", aiStyle: "Paddy Pimblett", archetype: "Boxer", subArchetype: "Showboat", wins: 0, losses: 1, draws: 0 },
+        { name: "Morrese Towns", className: "Heavyweight", height: "5'10\"", weight: 225, posture: "Sean Strickland", aiStyle: "Islam Makhachev", archetype: "Jiu-Jitsu", subArchetype: "Shark", wins: 1, losses: 0, draws: 0 },
+        { name: "Quincy Jackson", className: "Light Heavyweight", height: "5'8\"", weight: 186, posture: "Aljamain Sterling", aiStyle: "Aljamain Sterling", archetype: "Jiu-Jitsu", subArchetype: "Vanguard", wins: 0, losses: 0, draws: 0 },
+        { name: "Ray Cheers", className: "Heavyweight", height: "6'2\"", weight: 215, posture: "Diego Lopes", aiStyle: "Diego Lopes", archetype: "Kickboxer", subArchetype: "Sniper", wins: 0, losses: 1, draws: 0 },
+        { name: "Saman Khoshbin", className: "Heavyweight", height: "5'11\"", weight: 213, posture: "Sean O'Malley", aiStyle: "Sean O'Malley", archetype: "MMA", subArchetype: "Top Dog", wins: 0, losses: 0, draws: 0 },
+        { name: "Sean Bies", className: "Heavyweight", height: "6'5\"", weight: 265, posture: "Tyron Woodley", aiStyle: "Tyron Woodley", archetype: "Wrestler", subArchetype: "Dominator", wins: 1, losses: 0, draws: 0 },
+        { name: "Terrance Thomas", className: "Heavyweight", height: "6'4\"", weight: 265, posture: "Jose Aldo", aiStyle: "Jose Aldo", archetype: "Kickboxer", subArchetype: "Sniper", wins: 1, losses: 0, draws: 0 },
+        { name: "Troy Goodwin", className: "Heavyweight", height: "5'10\"", weight: 206, posture: "Georges St-Pierre", aiStyle: "Khabib Nurmagomedov", archetype: "Wrestler", subArchetype: "Smasher", wins: 1, losses: 0, draws: 0 },
+        { name: "Tyree Long", className: "Heavyweight", height: "6'2\"", weight: 232, posture: "Vitor Belfort", aiStyle: "Vitor Belfort", archetype: "Boxer", subArchetype: "Pressure", wins: 0, losses: 1, draws: 0 }
+      ],
+      matches: [
+        { id: "UPJFC001-1", event: "UPJFC001", position: "Main Event", division: "Cross class", blue: "Morrese Towns", red: "Eric Lugo", winner: "Morrese Towns", loser: "Eric Lugo", condition: "Submission", finish: "Submission", round: 2, time: "2:47", status: "Completed", note: "Performance of the Night, Sub" },
+        { id: "UPJFC001-2", event: "UPJFC001", position: "Main Card", division: "Heavyweight", blue: "Anthony Brown", red: "Troy Goodwin", winner: "Troy Goodwin", loser: "Anthony Brown", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
+        { id: "UPJFC001-3", event: "UPJFC001", position: "Main Card", division: "Heavyweight", blue: "Damon Wolfe", red: "Ray Cheers", winner: "Damon Wolfe", loser: "Ray Cheers", condition: "Submission", finish: "Submission", round: 1, time: "2:01", status: "Completed", note: "" },
+        { id: "UPJFC001-4", event: "UPJFC001", position: "Undercard", division: "Heavyweight", blue: "Sean Bies", red: "Maurice Sutton", winner: "Sean Bies", loser: "Maurice Sutton", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
+        { id: "UPJFC001-5", event: "UPJFC001", position: "Undercard", division: "Cross class", blue: "Jonathan Servin", red: "Buren Wilder Jr", winner: "Buren Wilder Jr", loser: "Jonathan Servin", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
+        { id: "UPJFC001-6", event: "UPJFC001", position: "Undercard", division: "Heavyweight", blue: "Tyree Long", red: "Terrance Thomas", winner: "Terrance Thomas", loser: "Tyree Long", condition: "KO/TKO", finish: "Head Kick", round: 3, time: "2:56", status: "Completed", note: "Fight of the Night / Performance of the Night, KO" }
+      ]
+    };
+
+    const escapeMap = { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" };
+    const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => escapeMap[char]);
+    const rankingByName = new Map(UPJFC_DATA.rankings.map((item) => [item.fighter, item]));
+
+    function initials(name) {
+      return name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
+    }
+
+    function renderStats() {
+      const activeChampions = UPJFC_DATA.champions.filter((item) => item.fighter !== "Vacant").length;
+      const completedMatches = UPJFC_DATA.matches.filter((item) => item.status === "Completed").length;
+      const leader = UPJFC_DATA.rankings[0];
+      const stats = [
+        { value: UPJFC_DATA.roster.length, label: "Roster Fighters", color: "var(--cyan)" },
+        { value: completedMatches, label: "Completed Fights", color: "var(--rose)" },
+        { value: activeChampions, label: "Active Champion", color: "var(--gold)" },
+        { value: leader.power.toFixed(1), label: "Top Power Score", color: "var(--lime)" }
+      ];
+      document.querySelector("#stat-strip").innerHTML = stats.map((item) => `
+        <div class="hero-stat" style="--accent:${item.color}">
+          <strong>${esc(item.value)}</strong><span>${esc(item.label)}</span>
+        </div>`).join("");
+    }
+
+    function renderChampions() {
+      document.querySelector("#champion-grid").innerHTML = UPJFC_DATA.champions.map((item) => {
+        const vacant = item.fighter === "Vacant";
+        return `
+          <article class="champion-card${vacant ? " vacant" : ""}">
+            <small>${esc(item.title)}</small>
+            <h3>${esc(item.fighter)}</h3>
+            <p>${vacant ? "Title currently unassigned" : `${esc(item.className)} | ${esc(item.record)} | Power ${esc(item.power)}`}</p>
+          </article>`;
+      }).join("");
+    }
+
+    function renderRankings() {
+      const topTen = UPJFC_DATA.rankings.slice(0, 10);
+      document.querySelector("#ranking-body").innerHTML = topTen.map((item) => `
+        <tr>
+          <td class="rank-number">#${esc(item.rank)}</td>
+          <td class="fighter-name">${esc(item.fighter)}</td>
+          <td>${esc(item.className)}</td>
+          <td>${esc(item.record)}</td>
+          <td>${esc(item.finishPct)}</td>
+          <td>${esc(item.streak || "-")}</td>
+          <td><span class="score${item.power < 0 ? " negative" : ""}">${esc(item.power.toFixed(1))}</span></td>
+          <td>${esc(item.scale)}</td>
+        </tr>`).join("");
+
+      document.querySelector("#ranking-cards").innerHTML = topTen.map((item) => `
+        <article class="ranking-card">
+          <span class="rank-number">#${esc(item.rank)}</span>
+          <div><h3>${esc(item.fighter)}</h3><p>${esc(item.className)} | ${esc(item.record)} | ${esc(item.streak || "No streak")}</p></div>
+          <span class="score${item.power < 0 ? " negative" : ""}">${esc(item.power.toFixed(1))}</span>
+        </article>`).join("");
+    }
+
+    function renderRoster() {
+      document.querySelector("#roster-grid").innerHTML = UPJFC_DATA.roster.map((fighter) => {
+        const ranking = rankingByName.get(fighter.name);
+        const record = ranking ? ranking.record : `${fighter.wins}-${fighter.losses}`;
+        const bio = `${fighter.height}, ${fighter.weight} lb ${fighter.className}. ${fighter.archetype} / ${fighter.subArchetype} profile using ${fighter.aiStyle} AI behavior and the ${fighter.posture} posture.`;
+        return `
+          <article class="fighter-card">
+            <div class="fighter-avatar">${esc(initials(fighter.name))}</div>
+            <div>
+              <p class="fighter-meta">#${esc(ranking?.rank || "-")} ${esc(fighter.className)}</p>
+              <h3>${esc(fighter.name)}</h3>
+              <span class="score${ranking && ranking.power < 0 ? " negative" : ""}">${esc((ranking?.power ?? 0).toFixed(1))}</span>
+            </div>
+            <p class="fighter-bio">${esc(bio)}</p>
+            <div class="fighter-stats">
+              <div class="mini-stat"><b>${esc(record)}</b><span>Record</span></div>
+              <div class="mini-stat"><b>${esc(fighter.archetype)}</b><span>Archetype</span></div>
+              <div class="mini-stat"><b>${esc(fighter.subArchetype)}</b><span>Sub Arch</span></div>
+              <div class="mini-stat"><b>${esc(ranking?.streak || "-")}</b><span>Streak</span></div>
+            </div>
+          </article>`;
+      }).join("");
+    }
+
+    function renderMatches() {
+      document.querySelector("#match-list").innerHTML = UPJFC_DATA.matches.map((match) => `
+        <article class="match-card${match.position === "Main Event" ? " main-event" : ""}">
+          <div><span class="match-id">${esc(match.id)}</span><div class="match-note">${esc(match.position)}<br>${esc(match.division)}</div></div>
+          <div><h3>${esc(match.blue)} vs ${esc(match.red)}</h3><div class="match-result"><span class="winner">${esc(match.winner)}</span> defeated ${esc(match.loser)}</div></div>
+          <div class="match-result">${esc(match.condition)} | ${esc(match.finish)}${match.note ? `<br><strong>${esc(match.note)}</strong>` : ""}</div>
+          <div class="match-round"><strong>R${esc(match.round)} ${esc(match.time)}</strong><span>${esc(match.status)}</span></div>
+        </article>`).join("");
+    }
+
+    function setupMenu() {
+      const menuButton = document.querySelector(".menu-toggle");
+      const jumpMenu = document.querySelector("#jump-menu");
+      const closeMenu = () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open jump menu");
+        jumpMenu.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+      };
+      menuButton.addEventListener("click", () => {
+        const opening = menuButton.getAttribute("aria-expanded") !== "true";
+        menuButton.setAttribute("aria-expanded", String(opening));
+        menuButton.setAttribute("aria-label", opening ? "Close jump menu" : "Open jump menu");
+        jumpMenu.classList.toggle("is-open", opening);
+        document.body.classList.toggle("menu-open", opening);
+      });
+      jumpMenu.addEventListener("click", (event) => {
+        if (event.target.closest("a")) closeMenu();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 860) closeMenu();
+      });
+    }
+
+    renderStats();
+    renderChampions();
+    renderRankings();
+    renderRoster();
+    renderMatches();
+    setupMenu();
+  </script>
+</body>
+</html>
+
