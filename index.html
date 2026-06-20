@@ -243,6 +243,43 @@
       margin-top: 30px;
     }
 
+    .sync-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 18px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 12, 23, 0.76);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .sync-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(250, 204, 21, 0.5);
+    }
+
+    .sync-status.live {
+      color: #dfffb4;
+      border-color: rgba(163, 230, 53, 0.35);
+    }
+
+    .sync-status.live .sync-dot {
+      background: var(--lime);
+      box-shadow: 0 0 14px rgba(163, 230, 53, 0.55);
+    }
+
+    .sync-status.fallback {
+      color: #ffe3a3;
+      border-color: rgba(250, 204, 21, 0.35);
+    }
+
     .button.primary {
       border: 0;
       background: linear-gradient(135deg, var(--cyan), var(--lime));
@@ -818,6 +855,10 @@
         <a class="button gold" href="#matches">UPJFC001 Results</a>
         <a class="button" href="https://docs.google.com/spreadsheets/d/1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM/edit">Open Source Sheet</a>
       </div>
+      <div class="sync-status" id="sync-status" role="status" aria-live="polite">
+        <span class="sync-dot" aria-hidden="true"></span>
+        <span>Connecting to Google Sheets...</span>
+      </div>
       <div class="stat-strip" id="stat-strip" aria-label="League snapshot"></div>
     </div>
   </section>
@@ -837,78 +878,7 @@
     <section class="section alt" id="rankings">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">Current top ten</span>
-          <h2>Power Rankings</h2>
-        </div>
-        <p>Scores combine completed matches, finishes, decisions, bonuses, championships, and streak performance from the live ranking model.</p>
-      </div>
-      <div class="ranking-shell">
-        <table class="ranking-table">
-          <thead>
-            <tr>
-              <th>Rank</th><th>Fighter</th><th>Class</th><th>Record</th><th>Finish %</th><th>Streak</th><th>Power Score</th><th>Scale</th>
-            </tr>
-          </thead>
-          <tbody id="ranking-body"></tbody>
-        </table>
-      </div>
-      <div class="ranking-cards" id="ranking-cards"></div>
-    </section>
-
-    <section class="section" id="roster">
-      <div class="section-heading">
-        <div>
-          <span class="section-kicker">28 active profiles</span>
-          <h2>Roster &amp; Bios</h2>
-        </div>
-        <p>Each profile combines roster measurements, archetype, sub-archetype, posture, AI style, record, rank, and power s…225 tokens truncated…footer>
-    <span>UPJFC - Unprovoked Jabs Fighting Championship</span>
-    <span>EA Sports UFC 6 AI vs AI League</span>
-  </footer>
-
-  <script>
-    const UPJFC_DATA = {
-      champions: [
-        { title: "Pound For Pound Champion", fighter: "Terrance Thomas", className: "Heavyweight", record: "1-0", power: 26 },
-        { title: "Heavyweight Champion", fighter: "Vacant", className: "", record: "", power: null },
-        { title: "Light Heavyweight Champion", fighter: "Vacant", className: "", record: "", power: null },
-        { title: "Middleweight Champion", fighter: "Vacant", className: "", record: "", power: null }
-      ],
-      rankings: [
-        { rank: 1, fighter: "Terrance Thomas", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 26, scale: "Prospect" },
-        { rank: 2, fighter: "Morrese Towns", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 11, scale: "Developing" },
-        { rank: 3, fighter: "Damon Wolfe", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 8, scale: "Developing" },
-        { rank: 4, fighter: "Buren Wilder Jr", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 5, fighter: "Sean Bies", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 6, fighter: "Troy Goodwin", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 7, fighter: "Tyree Long", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: 1, scale: "Developing" },
-        { rank: 8, fighter: "Aaron Sutton", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 9, fighter: "Allen Risner", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 10, fighter: "Anthony Williams", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 11, fighter: "Charles Velasquez", className: "Welterweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 12, fighter: "Chazz Burney", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 13, fighter: "Destin Sharp", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 14, fighter: "Devon Sutton", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 15, fighter: "Greg Earl", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 16, fighter: "Jermaine Jefferson", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 17, fighter: "Jimmy Sanchez", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 18, fighter: "Juan Ramos", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 19, fighter: "Kenneth Ramey", className: "Light Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 20, fighter: "Korey'e Dixon", className: "Welterweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 21, fighter: "Kyree Brammer", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 22, fighter: "Quincy Jackson", className: "Light Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 23, fighter: "Saman Khoshbin", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
-        { rank: 24, fighter: "Anthony Brown", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -3, scale: "Rebuild" },
-        { rank: 25, fighter: "Jonathan Servin", className: "Light Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -3, scale: "Rebuild" },
-        { rank: 26, fighter: "Maurice Sutton", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -3, scale: "Rebuild" },
-        { rank: 27, fighter: "Eric Lugo", className: "Light Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -4, scale: "Rebuild" },
-        { rank: 28, fighter: "Ray Cheers", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: -4, scale: "Rebuild" }
-      ],
-      roster: [
-        { name: "Aaron Sutton", className: "Heavyweight", height: "5'10\"", weight: 265, posture: "Michael Chandler", aiStyle: "Michael Chandler", archetype: "Boxer", subArchetype: "Powerhouse", wins: 0, losses: 0, draws: 0 },
-        { name: "Allen Risner", className: "Heavyweight", height: "6'0\"", weight: 238, posture: "Jairzinho Rozenstruik", aiStyle: "Jairzinho Rozenstruik", archetype: "Kickboxer", subArchetype: "Sniper", wins: 0, losses: 0, draws: 0 },
-        { name: "Anthony Brown", className: "Heavyweight", height: "5'10\"", weight: 265, posture: "Derrick Lewis", aiStyle: "Jon Jones Heavyweight", archetype: "MMA", subArchetype: "Virtuoso", wins: 0, losses: 1, draws: 0 },
-        { name: "Anthony Williams", className: "Heavyweight", height: "6'3\"", weight: 235, posture: "Leon Edwards", aiStyle: "Leon Edwards", archetype: "MMA", subArchetype: "Engine", wins: 0, losses: 0, draws: 0 },
+        …2037 tokens truncated… 0 },
         { name: "Buren Wilder Jr", className: "Heavyweight", height: "5'11\"", weight: 210, posture: "Dominick Reyes", aiStyle: "Cody Garbrandt", archetype: "Boxer", subArchetype: "Powerhouse", wins: 1, losses: 0, draws: 0 },
         { name: "Charles Velasquez", className: "Welterweight", height: "5'9\"", weight: 160, posture: "Khamzat Chimaev", aiStyle: "Khamzat Chimaev", archetype: "Kickboxer", subArchetype: "Sniper", wins: 0, losses: 0, draws: 0 },
         { name: "Chazz Burney", className: "Heavyweight", height: "6'1\"", weight: 210, posture: "Yair Rodriguez", aiStyle: "Yair Rodriguez", archetype: "Boxer", subArchetype: "Showboat", wins: 0, losses: 0, draws: 0 },
@@ -944,9 +914,129 @@
       ]
     };
 
+    const SHEET_ID = "1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM";
+    const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+    const SHEET_SOURCES = {
+      roster: { sheet: "ROSTER", range: "A1:O1000" },
+      rankings: { sheet: "POWER RANKINGS", range: "A3:N1000" },
+      champions: { sheet: "CHAMPIONS", range: "A3:E20" },
+      matches: { sheet: "MATCH DATABASE", range: "A1:AJ1000" }
+    };
+
+    let UPJFC_DATA = JSON.parse(JSON.stringify(FALLBACK_DATA));
+    let rankingByName = new Map();
+    let hasLiveData = false;
+
     const escapeMap = { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" };
     const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => escapeMap[char]);
-    const rankingByName = new Map(UPJFC_DATA.rankings.map((item) => [item.fighter, item]));
+    const asNumber = (value) => {
+      const parsed = Number(String(value ?? "").replace(/[^0-9.-]/g, ""));
+      return Number.isFinite(parsed) ? parsed : 0;
+    };
+
+    function cellValue(cell) {
+      if (!cell) return "";
+      return cell.f ?? cell.v ?? "";
+    }
+
+    function rowsFromTable(table) {
+      const headers = table.cols.map((column, index) => String(column.label || column.id || `Column ${index + 1}`).trim());
+      return table.rows.map((row) => {
+        const output = {};
+        headers.forEach((header, index) => {
+          output[header] = cellValue(row.c?.[index]);
+        });
+        return output;
+      });
+    }
+
+    function sheetUrl(source) {
+      const params = new URLSearchParams({
+        tqx: "out:json",
+        sheet: source.sheet,
+        range: source.range,
+        headers: "1",
+        t: String(Date.now())
+      });
+      return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?${params.toString()}`;
+    }
+
+    async function fetchSheet(source) {
+      const response = await fetch(sheetUrl(source), { cache: "no-store" });
+      if (!response.ok) throw new Error(`${source.sheet} returned ${response.status}`);
+      const text = await response.text();
+      const start = text.indexOf("{");
+      const end = text.lastIndexOf("}");
+      if (start < 0 || end <= start) throw new Error(`${source.sheet} returned an invalid response`);
+      const payload = JSON.parse(text.slice(start, end + 1));
+      if (payload.status === "error" || !payload.table) throw new Error(`${source.sheet} could not be read`);
+      return rowsFromTable(payload.table);
+    }
+
+    function mapRoster(rows) {
+      return rows.filter((row) => row["Fighter Name"]).map((row) => ({
+        name: row["Fighter Name"],
+        className: row.Class || "",
+        height: row.Height || "",
+        weight: asNumber(row.Weight),
+        posture: row.Posture || "",
+        aiStyle: row["AI Fighting Style"] || "",
+        archetype: row.Archetype || "",
+        subArchetype: row["Sub Archetype"] || "",
+        wins: asNumber(row.Wins),
+        losses: asNumber(row.Losses),
+        draws: asNumber(row.Draws)
+      }));
+    }
+
+    function mapRankings(rows) {
+      return rows.filter((row) => row.Fighter && asNumber(row.Rank) > 0).map((row) => ({
+        rank: asNumber(row.Rank),
+        fighter: row.Fighter,
+        className: row.Class || "",
+        record: row.Record || "0-0",
+        finishWins: asNumber(row["Finish Wins"]),
+        finishPct: row["Finish %"] || "0%",
+        streak: row["Fighting Streak"] || "",
+        power: asNumber(row["Power Score"]),
+        scale: row.Scale || ""
+      })).sort((a, b) => a.rank - b.rank);
+    }
+
+    function mapChampions(rows) {
+      return rows.filter((row) => row.Championship).map((row) => ({
+        title: row.Championship,
+        fighter: row.Fighter || "Vacant",
+        className: row.Class || "",
+        record: row.Record || "",
+        power: row["Power Score"] === "" ? null : asNumber(row["Power Score"])
+      }));
+    }
+
+    function mapMatches(rows) {
+      return rows.filter((row) => row["Match ID"]).map((row) => ({
+        id: row["Match ID"],
+        event: row["Event Name"] || "",
+        position: row["Card Position"] || "",
+        division: row.Class || "Cross class",
+        blue: row["Blue Corner"] || "",
+        red: row["Red Corner"] || "",
+        winner: row.Winner || "Pending",
+        loser: row.Loser || "",
+        condition: row["Victory Condition"] || "Pending",
+        finish: row["Finish Type"] || "",
+        round: row.Round || "-",
+        time: row.Time || "-",
+        status: row["Fight Status"] || "Scheduled",
+        note: row["Event Bonus"] || row.Notes || ""
+      }));
+    }
+
+    function setSyncStatus(mode, message) {
+      const status = document.querySelector("#sync-status");
+      status.className = `sync-status ${mode}`.trim();
+      status.querySelector("span:last-child").textContent = message;
+    }
 
     function initials(name) {
       return name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
@@ -1036,6 +1126,51 @@
         </article>`).join("");
     }
 
+    function renderAll() {
+      rankingByName = new Map(UPJFC_DATA.rankings.map((item) => [item.fighter, item]));
+      renderStats();
+      renderChampions();
+      renderRankings();
+      renderRoster();
+      renderMatches();
+    }
+
+    async function syncFromSheets() {
+      setSyncStatus("", "Syncing with Google Sheets...");
+      try {
+        const [rosterRows, rankingRows, championRows, matchRows] = await Promise.all([
+          fetchSheet(SHEET_SOURCES.roster),
+          fetchSheet(SHEET_SOURCES.rankings),
+          fetchSheet(SHEET_SOURCES.champions),
+          fetchSheet(SHEET_SOURCES.matches)
+        ]);
+
+        const roster = mapRoster(rosterRows);
+        const rankings = mapRankings(rankingRows);
+        const champions = mapChampions(championRows);
+        const matches = mapMatches(matchRows);
+
+        UPJFC_DATA = {
+          roster: roster.length ? roster : FALLBACK_DATA.roster,
+          rankings: rankings.length ? rankings : FALLBACK_DATA.rankings,
+          champions: champions.length ? champions : FALLBACK_DATA.champions,
+          matches: matches.length ? matches : FALLBACK_DATA.matches
+        };
+        hasLiveData = true;
+        renderAll();
+        setSyncStatus("live", `Live Google Sheets data - refreshed ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`);
+      } catch (error) {
+        if (!hasLiveData) {
+          UPJFC_DATA = JSON.parse(JSON.stringify(FALLBACK_DATA));
+          renderAll();
+        }
+        setSyncStatus("fallback", hasLiveData
+          ? "Last live data retained - automatic retry in five minutes"
+          : "Saved snapshot in use - automatic retry in five minutes");
+        console.warn("UPJFC Google Sheets sync failed:", error);
+      }
+    }
+
     function setupMenu() {
       const menuButton = document.querySelector(".menu-toggle");
       const jumpMenu = document.querySelector("#jump-menu");
@@ -1063,12 +1198,10 @@
       });
     }
 
-    renderStats();
-    renderChampions();
-    renderRankings();
-    renderRoster();
-    renderMatches();
+    renderAll();
     setupMenu();
+    syncFromSheets();
+    window.setInterval(syncFromSheets, REFRESH_INTERVAL_MS);
   </script>
 </body>
 </html>
