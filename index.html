@@ -379,6 +379,78 @@
       text-transform: uppercase;
     }
 
+    .tv-section {
+      background:
+        linear-gradient(120deg, rgba(34, 211, 238, 0.1), transparent 38%),
+        linear-gradient(235deg, rgba(239, 68, 68, 0.12), transparent 34%),
+        #050b13;
+    }
+
+    .tv-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.45fr);
+      gap: clamp(24px, 4vw, 48px);
+      align-items: center;
+    }
+
+    .tv-player {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(34, 211, 238, 0.38);
+      border-radius: 8px;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
+    }
+
+    .tv-player::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(251, 113, 133, 0.2);
+      pointer-events: none;
+    }
+
+    .tv-player iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .tv-copy h3 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .tv-copy p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .tv-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--rose);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .tv-live::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--rose);
+      box-shadow: 0 0 18px rgba(251, 113, 133, 0.8);
+    }
+
     .champion-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1017,6 +1089,7 @@
     }
 
     @media (max-width: 860px) {
+      .tv-layout,
       .top-five-grid,
       .story-grid,
       .title-list,
@@ -1231,6 +1304,7 @@
     </button>
     <nav class="jump-menu" id="jump-menu" aria-label="Jump section menu">
       <a href="#home">Home</a>
+      <a href="#tv">UPJFC TV</a>
       <a href="#spotlight">P4P Best</a>
       <a href="#rankings">Top 5</a>
       <a href="#stories">Articles</a>
@@ -1262,6 +1336,34 @@
   </section>
 
   <main>
+    <section class="section tv-section" id="tv">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Official broadcasts</span>
+          <h2>UPJFC TV</h2>
+        </div>
+        <p>The official fight playlist, led by its newest release and refreshed on the same 48-hour cycle as league data.</p>
+      </div>
+      <div class="tv-layout">
+        <div class="tv-player">
+          <iframe
+            id="upjfc-tv-player"
+            src="https://www.youtube-nocookie.com/embed/videoseries?list=PLa2KnnpQwi4S5fo837TNTqDukkDB0ilAt&amp;autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+            data-playlist-src="https://www.youtube-nocookie.com/embed/videoseries?list=PLa2KnnpQwi4S5fo837TNTqDukkDB0ilAt&amp;autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+            title="UPJFC official YouTube playlist"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        <div class="tv-copy">
+          <span class="tv-live">Playlist feed</span>
+          <h3>The Latest From the Cage</h3>
+          <p>New fight cards, highlights, and league coverage flow directly from the official playlist. The player follows YouTube's playlist order, so the newest video takes the lead when it is placed first.</p>
+          <a class="button primary" href="https://www.youtube.com/playlist?list=PLa2KnnpQwi4S5fo837TNTqDukkDB0ilAt">Open the Full Playlist</a>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="spotlight">
       <div class="section-heading">
         <div>
@@ -1333,7 +1435,7 @@
   </main>
 
   <div class="source-band">
-    <p><strong>Live data source:</strong> The site reads ROSTER, POWER RANKINGS, CHAMPIONS, and MATCH DATABASE directly from Google Sheets on load and refreshes every five minutes. The saved snapshot is used only if Google cannot be reached.</p>
+    <p><strong>Live data source:</strong> The site reads ROSTER, POWER RANKINGS, CHAMPIONS, and MATCH DATABASE directly from Google Sheets on load and refreshes the spreadsheet and UPJFC TV playlist every 48 hours. The saved snapshot is used only if Google cannot be reached.</p>
     <a class="button primary" href="https://docs.google.com/spreadsheets/d/1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM/edit">View Google Sheet</a>
   </div>
 
@@ -1421,7 +1523,7 @@
     };
 
     const SHEET_ID = "1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM";
-    const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
+    const REFRESH_INTERVAL_MS = 48 * 60 * 60 * 1000;
     const SHEET_SOURCES = {
       roster: { sheet: "ROSTER", range: "A1:O1000" },
       rankings: { sheet: "POWER RANKINGS", range: "A3:N1000" },
@@ -1705,9 +1807,19 @@
       document.querySelector("#match-list").innerHTML = UPJFC_DATA.matches.map((match) => `
         <article class="result-card${match.position === "Main Event" ? " main-event" : ""}">
           <div><span class="match-id">${esc(match.id)}</span><p>${esc(match.position)}<br>${esc(match.division)}</p></div>
-          <div><h3>${esc(match.blue)} vs ${esc(match.red)}</h3><p class="result-summary"><strong>${esc(match.winner)}</strong> defeated ${esc(match.loser)} by ${esc(match.finish || match.condition)} in round ${esc(match.round)} at ${esc(match.time)}.</p></div>
+          <div><h3>${esc(match.blue)} vs ${esc(match.red)}</h3><p class="result-summary">${formatResultRecap(match)}</p></div>
           <div>${match.note ? `<p class="award-note">${esc(match.note)}</p>` : `<p>${esc(match.status)}</p>`}</div>
         </article>`).join("");
+    }
+
+    function formatResultRecap(match) {
+      const winner = `<strong>${esc(match.winner)}</strong>`;
+      const loser = esc(match.loser);
+      const method = esc(match.condition || match.finish || "result");
+      const decision = /decision/i.test(`${match.condition || ""} ${match.finish || ""}`);
+      return decision
+        ? `${winner} defeated ${loser} by ${method} after ${esc(match.round)} rounds.`
+        : `${winner} defeated ${loser} by ${esc(match.finish || match.condition)} in round ${esc(match.round)} at ${esc(match.time)}.`;
     }
 
     function renderAll() {
@@ -1751,8 +1863,8 @@
           renderAll();
         }
         setSyncStatus("fallback", hasLiveData
-          ? "Last live data retained - automatic retry in five minutes"
-          : "Saved snapshot in use - automatic retry in five minutes");
+          ? "Last live data retained - automatic retry in 48 hours"
+          : "Saved snapshot in use - automatic retry in 48 hours");
         console.warn("UPJFC Google Sheets sync failed:", error);
       }
     }
@@ -1789,11 +1901,19 @@
       input.addEventListener("input", () => renderRoster(input.value));
     }
 
+    async function refreshExternalSources() {
+      await syncFromSheets();
+      const player = document.querySelector("#upjfc-tv-player");
+      const url = new URL(player.dataset.playlistSrc);
+      url.searchParams.set("refresh", Date.now());
+      player.src = url.toString();
+    }
+
     renderAll();
     setupMenu();
     setupRosterSearch();
     syncFromSheets();
-    window.setInterval(syncFromSheets, REFRESH_INTERVAL_MS);
+    window.setInterval(refreshExternalSources, REFRESH_INTERVAL_MS);
   </script>
 </body>
 </html>
