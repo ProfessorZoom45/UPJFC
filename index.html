@@ -1002,6 +1002,93 @@
       font-weight: 850;
     }
 
+    .event-recap-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .event-recap-card {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+      gap: 22px;
+      padding: clamp(20px, 3vw, 30px);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--gold);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(250, 204, 21, 0.12), transparent 48%),
+        var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .event-recap-card:nth-child(even) {
+      border-left-color: var(--cyan);
+      background:
+        linear-gradient(135deg, rgba(34, 211, 238, 0.1), transparent 48%),
+        var(--panel);
+    }
+
+    .event-recap-card h3 {
+      margin: 10px 0 14px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .event-recap-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .event-chip {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 0 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .event-fight-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .event-fight-list li {
+      padding: 13px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .event-fight-list strong {
+      color: var(--lime);
+    }
+
+    .event-fight-list span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
     .roster-toolbar {
       display: flex;
       justify-content: flex-end;
@@ -1104,6 +1191,7 @@
       .tv-layout,
       .top-five-grid,
       .story-grid,
+      .event-recap-card,
       .title-list,
       .roster-directory {
         grid-template-columns: 1fr;
@@ -1324,6 +1412,7 @@
       <a href="#rankings">Top 5</a>
       <a href="#stories">Articles</a>
       <a href="#matches">Results</a>
+      <a href="#events">Events</a>
       <a href="#roster">Roster</a>
     </nav>
   </header>
@@ -1333,12 +1422,12 @@
       <h1 id="page-title">UPJFC</h1>
       <p class="hero-copy">
         The online hub for Unprovoked Jabs Fighting Championship's EA Sports UFC 6 AI vs AI league.
-        Follow the fighters, stories, rankings, and results shaping the league after UPJFC001.
+        Follow the fighters, stories, rankings, and results shaping the league after two official events.
       </p>
       <div class="hero-actions">
         <a class="button primary" href="#spotlight">Meet the P4P Best</a>
         <a class="button" href="#rankings">View the Top 5</a>
-        <a class="button gold" href="#matches">UPJFC001 Results</a>
+        <a class="button gold" href="#matches">Latest Results</a>
       </div>
       <div class="sync-status" id="sync-status" role="status" aria-live="polite">
         <span class="sync-dot" aria-hidden="true"></span>
@@ -1355,7 +1444,7 @@
           <span class="section-kicker">Official broadcasts</span>
           <h2>UPJFC TV</h2>
         </div>
-        <p>The official fight playlist, led by its newest release and refreshed on the same 48-hour cycle as league data.</p>
+        <p>The official fight playlist, led by its newest release and refreshed after every UPJFC Event.</p>
       </div>
       <div class="tv-layout">
         <div class="tv-player">
@@ -1402,7 +1491,7 @@
     <section class="section" id="stories">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">From UPJFC001</span>
+          <span class="section-kicker">Unprovoked Jabs Fighting Championship</span>
           <h2>Fight Stories</h2>
         </div>
         <p>The defining performances and themes from the league's first official event in Las Vegas.</p>
@@ -1424,15 +1513,25 @@
     <section class="section" id="matches">
       <div class="section-heading">
         <div>
-          <span class="section-kicker">T-Mobile Arena, Las Vegas</span>
           <h2>Official Results</h2>
         </div>
-        <p>Every UPJFC001 result rewritten as a clear fight recap with the winner, method, round, time, and awards.</p>
+        <p>Every UPJFC result written as a clear fight recap with the winner, method, round, time, and awards. Recaps start with all fights from the most recent event back to the first event.</p>
       </div>
       <div class="match-list" id="match-list"></div>
     </section>
 
-    <section class="section alt" id="roster">
+    <section class="section alt" id="events">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Previous events</span>
+          <h2>Full Card Recaps</h2>
+        </div>
+        <p>UPJFC001 and UPJFC002 retold as full event recaps, with each bout pulled from the match database.</p>
+      </div>
+      <div class="event-recap-list" id="event-recaps"></div>
+    </section>
+
+    <section class="section" id="roster">
       <div class="section-heading">
         <div>
           <span class="section-kicker">Fighter directory</span>
@@ -1448,7 +1547,7 @@
   </main>
 
   <div class="source-band">
-    <p><strong>Live data source:</strong> The site reads ROSTER, POWER RANKINGS, CHAMPIONS, and MATCH DATABASE directly from Google Sheets on load and refreshes the spreadsheet and UPJFC TV playlist every 48 hours. The saved snapshot is used only if Google cannot be reached.</p>
+    <p><strong>Live data source:</strong> The site reads ROSTER, POWER RANKINGS, CHAMPIONS, and MATCH DATABASE directly from Google Sheets on load, retries league data every 48 hours, and keeps UPJFC TV tied to each official event cycle. The saved snapshot is used only if Google cannot be reached.</p>
     <a class="button primary" href="https://docs.google.com/spreadsheets/d/1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM/edit">View Google Sheet</a>
   </div>
 
@@ -1561,6 +1660,21 @@
       return Number.isFinite(parsed) ? parsed : 0;
     };
 
+    function eventNumber(value) {
+      const match = String(value ?? "").match(/(\d+)/);
+      return match ? Number(match[1]) : 0;
+    }
+
+    function matchNumber(value) {
+      const match = String(value ?? "").match(/-(\d+)$/);
+      return match ? Number(match[1]) : 0;
+    }
+
+    function newestFightSort(a, b) {
+      return eventNumber(b.event || b.id) - eventNumber(a.event || a.id)
+        || matchNumber(a.id) - matchNumber(b.id);
+    }
+
     function cellValue(cell) {
       if (!cell) return "";
       return cell.f ?? cell.v ?? "";
@@ -1667,6 +1781,7 @@
       return rows.filter((row) => row["Match ID"]).map((row) => ({
         id: row["Match ID"],
         event: row["Event Name"] || "",
+        location: row["Event Location"] || "",
         position: row["Card Position"] || "",
         division: row.Class || "Cross class",
         blue: row["Blue Corner"] || "",
@@ -1730,7 +1845,7 @@
         <div>
           <span class="feature-label">Pound For Pound Champion</span>
           <h3>${esc(leader.fighter)}</h3>
-          <p class="feature-deck">${esc(leader.fighter)} sets the early UPJFC standard as a ${esc(style)}. A ${esc(leader.record)} record, ${esc(leader.finishPct)} finish rate, and ${esc(leader.power.toFixed(1))} power score put him at the front of the league after its opening event.</p>
+          <p class="feature-deck">${esc(leader.fighter)} sets the early UPJFC standard as a ${esc(style)}. A ${esc(leader.record)} record, ${esc(leader.finishPct)} finish rate, and ${esc(leader.power.toFixed(1))} power score put him at the front of the league after two events.</p>
           <p class="feature-deck" style="margin-top:16px">${esc(resultLine)}</p>
         </div>
         <div class="feature-stats">
@@ -1761,27 +1876,23 @@
     }
 
     function renderStories() {
-      const mainEvent = UPJFC_DATA.matches.find((match) => match.position === "Main Event") || UPJFC_DATA.matches[0];
-      const knockout = UPJFC_DATA.matches.find((match) => /KO|TKO/i.test(match.condition) || /KO/i.test(match.note));
-      const decisions = UPJFC_DATA.matches.filter((match) => /Decision/i.test(match.condition));
-      const decisionWinners = decisions.map((match) => match.winner).join(", ");
       const stories = [
         {
-          label: "Main Event",
-          headline: `${mainEvent.winner} delivers when the lights are brightest`,
-          body: `${plainResultRecap(mainEvent)} The result immediately shaped the top of the UPJFC rankings.`
+          label: "Main Event Recaps",
+          headline: "Morrese Towns delivers when the lights are brightest",
+          body: "Morrese Towns defeated Damon Wolfe in his second fight by Unanimous Decision after defeating Eric Lugo by Submission in round 2 at 2:47 in his first fight. The results immediately shaped the top of the UPJFC rankings."
         },
-        knockout ? {
-          label: "Breakout Performance",
-          headline: `${knockout.winner} turns a finish into the night's biggest leap`,
-          body: `${plainResultRecap(knockout)} The finish${knockout.note ? ` and ${knockout.note.toLowerCase()}` : ""} pushed another name into the rankings picture.`
-        } : null,
         {
-          label: "Card Story",
-          headline: `${decisions.length} decisions reward patience and control`,
-          body: `${decisionWinners || "The judges"} earned wins on the scorecards. Those results shaped the middle of the first rankings and created an early group of unbeaten contenders.`
+          label: "Breakout Performance",
+          headline: "Terrance Thomas turns a finish into the night's biggest leap",
+          body: "Terrance Thomas defeated Tyree Long by KO/TKO in round 3 at 2:56. The finish and Fight of the Night / Performance of the Night, KO pushed another name into the rankings picture."
+        },
+        {
+          label: "Power Rankings Lens",
+          headline: "Seven scorecards reveal the league's control artists",
+          body: "Troy Goodwin, Sean Bies, Buren Wilder Jr, Quincy Jackson, Saman Khoshbin, and Kyree Brammer earned wins on the scorecards while Morrese Towns added a five-round main event decision. Those results built the middle of the rankings and created an early group of unbeaten contenders."
         }
-      ].filter(Boolean);
+      ];
 
       document.querySelector("#story-grid").innerHTML = stories.map((story) => `
         <article class="story-card">
@@ -1789,6 +1900,40 @@
           <h3>${esc(story.headline)}</h3>
           <p>${esc(story.body)}</p>
         </article>`).join("");
+    }
+
+    function completedMatches() {
+      return UPJFC_DATA.matches
+        .filter((match) => match.status === "Completed")
+        .slice()
+        .sort(newestFightSort);
+    }
+
+    function eventGroups() {
+      const groups = new Map();
+      completedMatches().forEach((match) => {
+        if (!groups.has(match.event)) groups.set(match.event, []);
+        groups.get(match.event).push(match);
+      });
+      return Array.from(groups.entries()).map(([event, matches]) => ({
+        event,
+        matches,
+        number: eventNumber(event),
+        location: matches.find((match) => match.location)?.location || ""
+      })).sort((a, b) => b.number - a.number);
+    }
+
+    function eventDescription(group) {
+      const mainEvent = group.matches.find((match) => match.position === "Main Event") || group.matches[0];
+      const finishCount = group.matches.filter((match) => !/Decision/i.test(match.condition)).length;
+      const awardWinners = group.matches.filter((match) => match.note).map((match) => `${match.winner} (${match.note})`);
+      if (group.event === "UPJFC002") {
+        return `${group.event} sharpened the league picture. ${mainEvent.winner} handled main-event pressure over ${mainEvent.round} rounds, Aaron Sutton added a fast heavyweight finish, and Quincy Jackson's light heavyweight win gave the card its hardest-fought spotlight.`;
+      }
+      if (group.event === "UPJFC001") {
+        return `${group.event} opened the UPJFC record book with submissions, scorecard control, and a late knockout surge. Morrese Towns announced himself in the main event while Terrance Thomas closed the night with the loudest finish.`;
+      }
+      return `${group.event} delivered ${group.matches.length} completed fights, ${finishCount} finishes, and ${awardWinners.length ? `award moments from ${awardWinners.join(", ")}` : "new movement in the rankings"}.`;
     }
 
     function renderChampions() {
@@ -1822,12 +1967,39 @@
     }
 
     function renderMatches() {
-      document.querySelector("#match-list").innerHTML = UPJFC_DATA.matches.map((match) => `
+      document.querySelector("#match-list").innerHTML = completedMatches().map((match) => `
         <article class="result-card${match.position === "Main Event" ? " main-event" : ""}">
           <div><span class="match-id">${esc(match.id)}</span><p>${esc(match.position)}<br>${esc(match.division)}</p></div>
           <div><h3>${esc(match.blue)} vs ${esc(match.red)}</h3><p class="result-summary">${formatResultRecap(match)}</p></div>
           <div>${match.note ? `<p class="award-note">${esc(match.note)}</p>` : `<p>${esc(match.status)}</p>`}</div>
         </article>`).join("");
+    }
+
+    function renderEventRecaps() {
+      document.querySelector("#event-recaps").innerHTML = eventGroups().map((group) => {
+        const finishes = group.matches.filter((match) => !/Decision/i.test(match.condition)).length;
+        const decisions = group.matches.length - finishes;
+        return `
+          <article class="event-recap-card">
+            <div>
+              <span class="feature-label">Event ${esc(String(group.number).padStart(3, "0"))}</span>
+              <h3>${esc(group.event)}</h3>
+              <p>${esc(eventDescription(group))}</p>
+              <div class="event-meta">
+                <span class="event-chip">${esc(group.matches.length)} fights</span>
+                <span class="event-chip">${esc(finishes)} finishes</span>
+                <span class="event-chip">${esc(decisions)} decisions</span>
+              </div>
+            </div>
+            <ul class="event-fight-list">
+              ${group.matches.map((match) => `
+                <li>
+                  ${formatResultRecap(match)}
+                  <span>${esc(match.position)} | ${esc(match.division)}${match.note ? ` | ${esc(match.note)}` : ""}</span>
+                </li>`).join("")}
+            </ul>
+          </article>`;
+      }).join("");
     }
 
     function formatResultRecap(match) {
@@ -1861,6 +2033,7 @@
       renderChampions();
       renderRoster(document.querySelector("#roster-search")?.value || "");
       renderMatches();
+      renderEventRecaps();
     }
 
     async function syncFromSheets() {
