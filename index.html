@@ -51,7 +51,9 @@
     }
 
     button,
-    input {
+    input,
+    select,
+    textarea {
       font: inherit;
     }
 
@@ -461,6 +463,179 @@
       border-radius: 50%;
       background: var(--rose);
       box-shadow: 0 0 18px rgba(251, 113, 133, 0.8);
+    }
+
+    .callout-section {
+      background:
+        linear-gradient(120deg, rgba(163, 230, 53, 0.09), transparent 36%),
+        linear-gradient(245deg, rgba(34, 211, 238, 0.1), transparent 38%),
+        var(--navy-2);
+    }
+
+    .callout-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1fr);
+      gap: clamp(22px, 4vw, 42px);
+      align-items: stretch;
+    }
+
+    .callout-panel,
+    .callout-form {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .callout-panel {
+      display: grid;
+      align-content: space-between;
+      min-height: 100%;
+      padding: 24px;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(250, 204, 21, 0.15), transparent 48%),
+        linear-gradient(315deg, rgba(251, 113, 133, 0.12), transparent 42%),
+        var(--panel);
+    }
+
+    .callout-panel h3 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .callout-panel p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .callout-rules {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .callout-rules span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #d6e1ef;
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .callout-rules span::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent, var(--cyan));
+      box-shadow: 0 0 14px color-mix(in srgb, var(--accent, var(--cyan)) 55%, transparent);
+    }
+
+    .callout-form {
+      padding: 22px;
+      background: rgba(16, 29, 49, 0.92);
+    }
+
+    .callout-form[aria-disabled="true"] {
+      border-color: rgba(250, 204, 21, 0.35);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .field select,
+    .field input,
+    .field textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: rgba(4, 10, 18, 0.76);
+      color: var(--ink);
+      padding: 12px 13px;
+      outline: none;
+    }
+
+    .field select:focus,
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(34, 211, 238, 0.75);
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.13);
+    }
+
+    .field textarea {
+      min-height: 116px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+
+    .field select option {
+      color: #07111f;
+    }
+
+    .callout-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+      opacity: 0.6;
+      transform: none;
+    }
+
+    .callout-status {
+      flex: 1 1 260px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .callout-status.success {
+      color: #dfffb4;
+    }
+
+    .callout-status.error {
+      color: #fecaca;
+    }
+
+    .callout-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
     }
 
     .champion-grid {
@@ -1189,6 +1364,7 @@
 
     @media (max-width: 860px) {
       .tv-layout,
+      .callout-layout,
       .top-five-grid,
       .story-grid,
       .event-recap-card,
@@ -1309,6 +1485,10 @@
         margin-top: 14px;
       }
 
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
       .ranking-shell {
         display: none;
       }
@@ -1408,6 +1588,7 @@
     <nav class="jump-menu" id="jump-menu" aria-label="Jump section menu">
       <a href="#home">Home</a>
       <a href="#tv">UPJFC TV</a>
+      <a href="#book-fight">Book A Fight</a>
       <a href="#spotlight">P4P Best</a>
       <a href="#rankings">Top 5</a>
       <a href="#stories">Articles</a>
@@ -1463,6 +1644,64 @@
           <p>New fight cards, highlights, and league coverage flow directly from the official playlist. The player follows YouTube's playlist order, so the newest video takes the lead when it is placed first.</p>
           <a class="button primary" href="https://www.youtube.com/playlist?list=PLa2KnnpQwi4S5fo837TNTqDukkDB0ilAt">Open the Full Playlist</a>
         </div>
+      </div>
+    </section>
+
+    <section class="section callout-section" id="book-fight">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">Open weight challenge desk</span>
+          <h2>Book A Fight</h2>
+        </div>
+        <p>Select two UPJFC fighters and submit the matchup for review as a potential main card callout.</p>
+      </div>
+      <div class="callout-layout">
+        <aside class="callout-panel">
+          <div>
+            <span class="section-kicker">Fan matchmaking</span>
+            <h3>Call out the next matchup</h3>
+            <p>Challenge requests go to the new UPJFC Callouts sheet with a pending review status, ready for the league to approve, reject, or book.</p>
+          </div>
+          <div class="callout-rules" aria-label="Callout rules">
+            <span style="--accent:var(--cyan)">Roster fighters only</span>
+            <span style="--accent:var(--gold)">No same-fighter callouts</span>
+            <span style="--accent:var(--rose)">Open weight main card request</span>
+          </div>
+        </aside>
+        <form class="callout-form" id="callout-form" method="POST" target="callout-frame" aria-label="Book a fight request form">
+          <input class="callout-honeypot" id="callout-website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input name="challengeType" type="hidden" value="Open Weight Challenge">
+          <input name="suggestedCardPosition" type="hidden" value="Potential Main Card Matchup">
+          <input name="source" type="hidden" value="UPJFC GitHub Pages">
+          <input id="callout-user-agent" name="userAgent" type="hidden">
+          <div class="form-grid">
+            <div class="field">
+              <label for="callout-fighter-1">Fighter 1</label>
+              <select id="callout-fighter-1" name="fighter1" required>
+                <option value="">Loading roster...</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="callout-fighter-2">Fighter 2</label>
+              <select id="callout-fighter-2" name="fighter2" required>
+                <option value="">Loading roster...</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="callout-name">Name</label>
+              <input id="callout-name" name="submitterName" type="text" maxlength="80" placeholder="Optional">
+            </div>
+            <div class="field full">
+              <label for="callout-notes">Why this fight?</label>
+              <textarea id="callout-notes" name="notes" maxlength="500" placeholder="Add a quick reason or storyline for the matchup"></textarea>
+            </div>
+          </div>
+          <div class="callout-actions">
+            <button class="button primary" id="callout-submit" type="submit">Submit Callout</button>
+            <p class="callout-status" id="callout-status" role="status" aria-live="polite">Roster loading from Google Sheets.</p>
+          </div>
+        </form>
+        <iframe name="callout-frame" title="Book a fight submission" hidden></iframe>
       </div>
     </section>
 
@@ -1635,11 +1874,13 @@
         { id: "UPJFC001-3", event: "UPJFC001", position: "Main Card", division: "Heavyweight", blue: "Damon Wolfe", red: "Ray Cheers", winner: "Damon Wolfe", loser: "Ray Cheers", condition: "Submission", finish: "Submission", round: 1, time: "2:01", status: "Completed", note: "" },
         { id: "UPJFC001-4", event: "UPJFC001", position: "Undercard", division: "Heavyweight", blue: "Sean Bies", red: "Maurice Sutton", winner: "Sean Bies", loser: "Maurice Sutton", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
         { id: "UPJFC001-5", event: "UPJFC001", position: "Undercard", division: "Cross class", blue: "Jonathan Servin", red: "Buren Wilder Jr", winner: "Buren Wilder Jr", loser: "Jonathan Servin", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
-        { id: "UPJFC001-6", event: "UPJFC001", position: "Undercard", division: "Heavyweight", blue: "Tyree Long", red: "Terrance Thomas", winner: "Terrance Thomas", loser: "Tyree Long", condition: "KO/TKO", finish: "Head Kick", round: 3, time: "2:56", status: "Completed", note: "Fight of the Night / Performance of the Night, KO" }
+        { id: "UPJFC001-6", event: "UPJFC001", position: "Undercard", division: "Heavyweight", blue: "Tyree Long", red: "Terrance Thomas", winner: "Terrance Thomas", loser: "Tyree Long", condition: "KO/TKO", finish: "Strikes", round: 3, time: "2:56", status: "Completed", note: "Fight of the Night / Performance of the Night, KO" }
       ]
     };
 
     const SHEET_ID = "1-Xj-07UMUvF_BBthKCNCZHg8kS86AqeK6WBUjuJACnM";
+    // Paste the deployed Apps Script Web App URL here to make Book A Fight submissions live.
+    const CALLOUT_ENDPOINT = "";
     const REFRESH_INTERVAL_MS = 48 * 60 * 60 * 1000;
     const SHEET_SOURCES = {
       roster: { sheet: "ROSTER", range: "A1:O1000" },
@@ -1652,6 +1893,7 @@
     let rankingByName = new Map();
     let hasLiveData = false;
     let syncRequestId = 0;
+    let calloutSubmitted = false;
 
     const escapeMap = { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" };
     const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => escapeMap[char]);
@@ -2034,6 +2276,107 @@
       renderRoster(document.querySelector("#roster-search")?.value || "");
       renderMatches();
       renderEventRecaps();
+      populateCalloutFighters();
+    }
+
+    function setCalloutStatus(message, mode = "") {
+      const status = document.querySelector("#callout-status");
+      if (!status) return;
+      status.className = `callout-status ${mode}`.trim();
+      status.textContent = message;
+    }
+
+    function calloutFighterNames() {
+      return Array.from(new Set(UPJFC_DATA.roster.map((fighter) => fighter.name).filter((name) => name && name !== "Vacant")))
+        .sort((a, b) => a.localeCompare(b));
+    }
+
+    function populateCalloutFighters() {
+      const selects = [document.querySelector("#callout-fighter-1"), document.querySelector("#callout-fighter-2")];
+      if (selects.some((select) => !select)) return;
+      const previous = selects.map((select) => select.value);
+      const names = calloutFighterNames();
+      const options = ['<option value="">Select fighter</option>']
+        .concat(names.map((name) => `<option value="${esc(name)}">${esc(name)}</option>`))
+        .join("");
+
+      selects.forEach((select, index) => {
+        select.innerHTML = options;
+        if (names.includes(previous[index])) select.value = previous[index];
+      });
+      configureCalloutForm(names.length);
+    }
+
+    function configureCalloutForm(hasRoster) {
+      const form = document.querySelector("#callout-form");
+      const button = document.querySelector("#callout-submit");
+      if (!form || !button) return;
+      const endpointReady = /^https:\/\/script\.google\.com\/macros\/s\//.test(CALLOUT_ENDPOINT);
+      form.setAttribute("aria-disabled", String(!endpointReady));
+      button.disabled = !endpointReady || !hasRoster;
+
+      if (!hasRoster) {
+        setCalloutStatus("Roster is still loading. Try again in a moment.", "error");
+        return;
+      }
+
+      if (!endpointReady) {
+        form.removeAttribute("action");
+        setCalloutStatus("Book A Fight is ready. Deploy the Apps Script Web App, then paste its URL into CALLOUT_ENDPOINT to turn submissions on.");
+        return;
+      }
+
+      form.action = CALLOUT_ENDPOINT;
+      setCalloutStatus("Pick two different fighters and submit the callout for review.");
+    }
+
+    function setupCalloutForm() {
+      const form = document.querySelector("#callout-form");
+      const frame = document.querySelector('iframe[name="callout-frame"]');
+      if (!form || !frame) return;
+
+      form.addEventListener("submit", (event) => {
+        const fighter1 = document.querySelector("#callout-fighter-1").value;
+        const fighter2 = document.querySelector("#callout-fighter-2").value;
+        const endpointReady = /^https:\/\/script\.google\.com\/macros\/s\//.test(CALLOUT_ENDPOINT);
+
+        if (!endpointReady) {
+          event.preventDefault();
+          setCalloutStatus("Submission is not live yet. Add the deployed Apps Script Web App URL to CALLOUT_ENDPOINT.", "error");
+          return;
+        }
+
+        if (!fighter1 || !fighter2) {
+          event.preventDefault();
+          setCalloutStatus("Select two fighters before submitting.", "error");
+          return;
+        }
+
+        if (fighter1 === fighter2) {
+          event.preventDefault();
+          setCalloutStatus("Choose two different fighters. A fighter cannot call out themself.", "error");
+          return;
+        }
+
+        document.querySelector("#callout-user-agent").value = navigator.userAgent;
+        calloutSubmitted = true;
+        setCalloutStatus("Sending callout to the UPJFC spreadsheet...", "");
+        window.setTimeout(() => {
+          if (!calloutSubmitted) return;
+          calloutSubmitted = false;
+          form.reset();
+          populateCalloutFighters();
+          setCalloutStatus("Callout sent for review in UPJFC Callouts.", "success");
+        }, 2500);
+      });
+
+      frame.addEventListener("load", () => {
+        if (!calloutSubmitted) return;
+        calloutSubmitted = false;
+        form.reset();
+        populateCalloutFighters();
+        setCalloutStatus("Callout sent for review in UPJFC Callouts.", "success");
+      });
     }
 
     async function syncFromSheets() {
@@ -2129,6 +2472,7 @@
     renderAll();
     setupMenu();
     setupRosterSearch();
+    setupCalloutForm();
     syncFromSheets();
     window.setInterval(refreshExternalSources, REFRESH_INTERVAL_MS);
   </script>
