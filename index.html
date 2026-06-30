@@ -1660,7 +1660,7 @@
           <div>
             <span class="section-kicker">Fan matchmaking</span>
             <h3>Call out the next matchup</h3>
-            <p>Challenge requests go to the new UPJFC Callouts sheet with a pending review status, ready for the league to approve, reject, or book.</p>
+            <p>Challenge requests are sent to the UPJFC Apps Script endpoint, then written to the UPJFC Callouts sheet with a pending review status.</p>
           </div>
           <div class="callout-rules" aria-label="Callout rules">
             <span style="--accent:var(--cyan)">Roster fighters only</span>
@@ -2360,13 +2360,13 @@
 
         document.querySelector("#callout-user-agent").value = navigator.userAgent;
         calloutSubmitted = true;
-        setCalloutStatus("Sending callout to the UPJFC spreadsheet...", "");
+        setCalloutStatus("Sending callout to the UPJFC Apps Script endpoint...", "");
         window.setTimeout(() => {
           if (!calloutSubmitted) return;
           calloutSubmitted = false;
           form.reset();
           populateCalloutFighters();
-          setCalloutStatus("Callout sent for review in UPJFC Callouts.", "success");
+          setCalloutStatus("Request sent. Check UPJFC Callouts; if it is missing, redeploy the Apps Script Web App with the current one-script code.", "success");
         }, 2500);
       });
 
@@ -2375,7 +2375,7 @@
         calloutSubmitted = false;
         form.reset();
         populateCalloutFighters();
-        setCalloutStatus("Callout sent for review in UPJFC Callouts.", "success");
+        setCalloutStatus("Request sent. Check UPJFC Callouts; if it is missing, redeploy the Apps Script Web App with the current one-script code.", "success");
       });
     }
 
