@@ -2137,8 +2137,8 @@
       const stories = [
         {
           label: "Tournament Crown",
-          headline: "Buren Wilder Jr turns Stand and Bang 1 into a takeover",
-          body: "Buren Wilder Jr ran through Eric Lugo, Allen Risner, and Terrance Thomas to win Stand and Bang 1. The tournament pushed him to 4-0, gave him three knockout wins, and moved him to the top of the UPJFC power rankings."
+          headline: "Buren Wilder Jr wins when the cage takes wrestling away",
+          body: "Stand and Bang 1 stripped the fight down to a striking-only UFC ruleset: no takedowns, no submissions, no clinch-heavy escape plan, just hands, kicks, defense, pressure, and damage. Buren Wilder Jr ran through Eric Lugo, Allen Risner, and Terrance Thomas in that format, leaving as tournament champion, 4-0 overall, and the new name at the top of the power rankings."
         },
         {
           label: "London Main Event",
@@ -2147,8 +2147,8 @@
         },
         {
           label: "Rankings Pressure",
-          headline: "The top five finally has a real argument",
-          body: "Terrance Thomas still holds the Pound For Pound title, but Buren Wilder Jr owns the hottest record. Allen Risner, Morrese Towns, and Quincy Jackson round out a top five that now has finishes, decisions, tournament pressure, and unfinished business."
+          headline: "The top five finally has tension",
+          body: "Terrance Thomas still holds the Pound For Pound title, but Buren Wilder Jr now owns the hottest record and the Stand and Bang belt. Allen Risner, Morrese Towns, and Quincy Jackson round out a top five that has finishes, decisions, tournament pressure, and a clear question waiting for the next card: champion status or power score momentum?"
         }
       ];
 
@@ -2186,7 +2186,7 @@
       const finishCount = group.matches.filter((match) => !/Decision/i.test(match.condition)).length;
       const awardWinners = group.matches.filter((match) => match.note).map((match) => `${match.winner} (${match.note})`);
       if (group.event === "UPJFC004") {
-        return `Stand and Bang 1 was Buren Wilder Jr's breakout night. He beat Eric Lugo in the opening round, put away Allen Risner in the semifinal, and finished Terrance Thomas in the final to leave as tournament champion and the hottest fighter in the league.`;
+        return `Stand and Bang 1 was a striking-only tournament: no takedowns, no submissions, and no ground control to slow the pace. Buren Wilder Jr thrived in that rule set, beating Eric Lugo in the opening round, putting away Allen Risner in the semifinal, and finishing Terrance Thomas in the final to leave as tournament champion and the hottest fighter in the league.`;
       }
       if (group.event === "UPJFC003") {
         return `${group.event} took UPJFC to The O2 and gave the league a sharp five-fight update. Jonathan Servin closed the night with a fourth-round knockout, Allen Risner won the Fight of the Night, and Jimmy Sanchez added a late-round finish.`;
