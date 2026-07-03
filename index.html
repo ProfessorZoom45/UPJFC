@@ -1733,7 +1733,7 @@
           <span class="section-kicker">Unprovoked Jabs Fighting Championship</span>
           <h2>Fight Stories</h2>
         </div>
-        <p>The defining performances and themes from the league's first official event in Las Vegas.</p>
+        <p>The latest movement from UPJFC003 in London and the Stand and Bang 1 tournament, written as a league update instead of a spreadsheet dump.</p>
       </div>
       <div class="story-grid" id="story-grid"></div>
     </section>
@@ -1765,7 +1765,7 @@
           <span class="section-kicker">Previous events</span>
           <h2>Full Card Recaps</h2>
         </div>
-        <p>UPJFC001 and UPJFC002 retold as full event recaps, with each bout pulled from the match database.</p>
+        <p>Every completed UPJFC event retold as a full card recap, with each bout pulled from the match database.</p>
       </div>
       <div class="event-recap-list" id="event-recaps"></div>
     </section>
@@ -1798,22 +1798,23 @@
   <script>
     const FALLBACK_DATA = {
       champions: [
-        { title: "Pound For Pound Champion", fighter: "Terrance Thomas", className: "Heavyweight", record: "1-0", power: 26 },
+        { title: "Pound For Pound Champion", fighter: "Terrance Thomas", className: "Heavyweight", record: "3-1", power: 44 },
         { title: "Heavyweight Champion", fighter: "Vacant", className: "", record: "", power: null },
         { title: "Light Heavyweight Champion", fighter: "Vacant", className: "", record: "", power: null },
-        { title: "Middleweight Champion", fighter: "Vacant", className: "", record: "", power: null }
+        { title: "Middleweight Champion", fighter: "Vacant", className: "", record: "", power: null },
+        { title: "Stand and Bang Champion", fighter: "Buren Wilder Jr", className: "Heavyweight", record: "4-0", power: 51 }
       ],
       rankings: [
-        { rank: 1, fighter: "Terrance Thomas", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 26, scale: "Prospect" },
-        { rank: 2, fighter: "Morrese Towns", className: "Heavyweight", record: "2-0", finishWins: 1, finishPct: "50%", streak: "W2", power: 16, scale: "Developing" },
-        { rank: 3, fighter: "Aaron Sutton", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 11, scale: "Developing" },
-        { rank: 4, fighter: "Quincy Jackson", className: "Light Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 10, scale: "Developing" },
-        { rank: 5, fighter: "Buren Wilder Jr", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 6, fighter: "Kyree Brammer", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 7, fighter: "Saman Khoshbin", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 8, fighter: "Sean Bies", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 9, fighter: "Troy Goodwin", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
-        { rank: 10, fighter: "Damon Wolfe", className: "Heavyweight", record: "1-1", finishWins: 1, finishPct: "100%", streak: "L1", power: 5, scale: "Developing" },
+        { rank: 1, fighter: "Buren Wilder Jr", className: "Heavyweight", record: "4-0", finishWins: 3, finishPct: "75%", streak: "W4", power: 51, scale: "Contender" },
+        { rank: 2, fighter: "Terrance Thomas", className: "Heavyweight", record: "3-1", finishWins: 3, finishPct: "100%", streak: "L1", power: 44, scale: "Prospect" },
+        { rank: 3, fighter: "Allen Risner", className: "Heavyweight", record: "2-1", finishWins: 1, finishPct: "50%", streak: "L1", power: 17, scale: "Developing" },
+        { rank: 4, fighter: "Morrese Towns", className: "Heavyweight", record: "2-0", finishWins: 1, finishPct: "50%", streak: "W2", power: 16, scale: "Developing" },
+        { rank: 5, fighter: "Quincy Jackson", className: "Light Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 10, scale: "Developing" },
+        { rank: 6, fighter: "Damon Wolfe", className: "Heavyweight", record: "2-2", finishWins: 1, finishPct: "50%", streak: "L1", power: 9, scale: "Developing" },
+        { rank: 7, fighter: "Jimmy Sanchez", className: "Heavyweight", record: "1-0", finishWins: 1, finishPct: "100%", streak: "W1", power: 8, scale: "Developing" },
+        { rank: 8, fighter: "Jonathan Servin", className: "Light Heavyweight", record: "1-1", finishWins: 1, finishPct: "100%", streak: "W1", power: 8, scale: "Developing" },
+        { rank: 9, fighter: "Aaron Sutton", className: "Heavyweight", record: "1-1", finishWins: 1, finishPct: "100%", streak: "L1", power: 7, scale: "Developing" },
+        { rank: 10, fighter: "Chazz Burney", className: "Heavyweight", record: "1-0", finishWins: 0, finishPct: "0%", streak: "W1", power: 5, scale: "Developing" },
         { rank: 11, fighter: "Kenneth Ramey", className: "Light Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: 2, scale: "Developing" },
         { rank: 12, fighter: "Tyree Long", className: "Heavyweight", record: "0-1", finishWins: 0, finishPct: "0%", streak: "L1", power: 1, scale: "Developing" },
         { rank: 13, fighter: "Allen Risner", className: "Heavyweight", record: "0-0", finishWins: 0, finishPct: "0%", streak: "", power: 0, scale: "Rebuild" },
@@ -1841,7 +1842,7 @@
         { name: "Buren Wilder Jr", className: "Heavyweight", height: "5'11\"", weight: 210, posture: "Dominick Reyes", aiStyle: "Cody Garbrandt", archetype: "Boxer", subArchetype: "Powerhouse", wins: 1, losses: 0, draws: 0 },
         { name: "Charles Velasquez", className: "Welterweight", height: "5'9\"", weight: 160, posture: "Khamzat Chimaev", aiStyle: "Khamzat Chimaev", archetype: "Kickboxer", subArchetype: "Sniper", wins: 0, losses: 0, draws: 0 },
         { name: "Chazz Burney", className: "Heavyweight", height: "6'1\"", weight: 210, posture: "Yair Rodriguez", aiStyle: "Yair Rodriguez", archetype: "Boxer", subArchetype: "Showboat", wins: 0, losses: 0, draws: 0 },
-        { name: "Damon Wolfe", className: "Heavyweight", height: "6'2\"", weight: 206, posture: "Jon Jones", aiStyle: "Minotauro Nogueira", archetype: "Jiu-Jitsu", subArchetype: "Vanguard", wins: 1, losses: 1, draws: 0 },
+        { name: "Damon Wolfe", className: "Heavyweight", height: "6'2\"", weight: 206, posture: "Jon Jones", aiStyle: "Brian Ortega", archetype: "Jiu-Jitsu", subArchetype: "Vanguard", wins: 1, losses: 1, draws: 0 },
         { name: "Destin Sharp", className: "Heavyweight", height: "6'0\"", weight: 265, posture: "Kamaru Usman", aiStyle: "Ken Shamrock", archetype: "Wrestler", subArchetype: "Smasher", wins: 0, losses: 1, draws: 0 },
         { name: "Devon Sutton", className: "Heavyweight", height: "5'10\"", weight: 265, posture: "Justin Gaethje", aiStyle: "Justin Gaethje", archetype: "Kickboxer", subArchetype: "Razor", wins: 0, losses: 1, draws: 0 },
         { name: "Eric Lugo", className: "Light Heavyweight", height: "5'8\"", weight: 187, posture: "Alex Pereira", aiStyle: "Ovince Saint Preux", archetype: "Kickboxer", subArchetype: "Acrobat", wins: 0, losses: 1, draws: 0 },
@@ -1864,6 +1865,18 @@
         { name: "Tyree Long", className: "Heavyweight", height: "6'2\"", weight: 232, posture: "Vitor Belfort", aiStyle: "Vitor Belfort", archetype: "Boxer", subArchetype: "Pressure", wins: 0, losses: 1, draws: 0 }
       ],
       matches: [
+        { id: "UPJFC004-7", event: "UPJFC004", position: "Main Event", division: "Heavyweight", blue: "Buren Wilder Jr", red: "Terrance Thomas", winner: "Buren Wilder Jr", loser: "Terrance Thomas", condition: "KO/TKO", finish: "Strikes", round: "-", time: "-", status: "Completed", note: "Stand and Bang 1 tournament final; Tournament Winner: Buren Wilder Jr" },
+        { id: "UPJFC004-6", event: "UPJFC004", position: "Main Card", division: "Heavyweight", blue: "Terrance Thomas", red: "Damon Wolfe", winner: "Terrance Thomas", loser: "Damon Wolfe", condition: "KO/TKO", finish: "Strikes", round: "-", time: "-", status: "Completed", note: "Stand and Bang 1 semifinal" },
+        { id: "UPJFC004-5", event: "UPJFC004", position: "Main Card", division: "Heavyweight", blue: "Buren Wilder Jr", red: "Allen Risner", winner: "Buren Wilder Jr", loser: "Allen Risner", condition: "KO/TKO", finish: "Strikes", round: "-", time: "-", status: "Completed", note: "Stand and Bang 1 semifinal" },
+        { id: "UPJFC004-4", event: "UPJFC004", position: "Main Card", division: "Heavyweight", blue: "Maurice Sutton", red: "Damon Wolfe", winner: "Damon Wolfe", loser: "Maurice Sutton", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "Stand and Bang 1 opening round" },
+        { id: "UPJFC004-3", event: "UPJFC004", position: "Main Card", division: "Heavyweight", blue: "Aaron Sutton", red: "Terrance Thomas", winner: "Terrance Thomas", loser: "Aaron Sutton", condition: "KO/TKO", finish: "Strikes", round: "-", time: "-", status: "Completed", note: "Stand and Bang 1 opening round" },
+        { id: "UPJFC004-2", event: "UPJFC004", position: "Main Card", division: "Heavyweight", blue: "Ray Cheers", red: "Allen Risner", winner: "Allen Risner", loser: "Ray Cheers", condition: "KO/TKO", finish: "Strikes", round: "-", time: "-", status: "Completed", note: "Stand and Bang 1 opening round" },
+        { id: "UPJFC004-1", event: "UPJFC004", position: "Main Card", division: "Cross class", blue: "Eric Lugo", red: "Buren Wilder Jr", winner: "Buren Wilder Jr", loser: "Eric Lugo", condition: "KO/TKO", finish: "Strikes", round: "-", time: "-", status: "Completed", note: "Stand and Bang 1 opening round" },
+        { id: "UPJFC003-1", event: "UPJFC003", location: "The O2, London, England", position: "Main Event", division: "Light Heavyweight", blue: "Jonathan Servin", red: "Eric Lugo", winner: "Jonathan Servin", loser: "Eric Lugo", condition: "KO/TKO", finish: "Strikes", round: 4, time: "4:18", status: "Completed", note: "Performance of the Night, KO" },
+        { id: "UPJFC003-2", event: "UPJFC003", location: "The O2, London, England", position: "Main Card", division: "Heavyweight", blue: "Anthony Williams", red: "Allen Risner", winner: "Allen Risner", loser: "Anthony Williams", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "Fight of the Night" },
+        { id: "UPJFC003-3", event: "UPJFC003", location: "The O2, London, England", position: "Main Card", division: "Cross class", blue: "Chazz Burney", red: "Charles Velasquez", winner: "Chazz Burney", loser: "Charles Velasquez", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
+        { id: "UPJFC003-4", event: "UPJFC003", location: "The O2, London, England", position: "Main Card", division: "Cross class", blue: "Jimmy Sanchez", red: "Korey'e Dixon", winner: "Jimmy Sanchez", loser: "Korey'e Dixon", condition: "KO/TKO", finish: "Strikes", round: 3, time: "1:37", status: "Completed", note: "" },
+        { id: "UPJFC003-5", event: "UPJFC003", location: "The O2, London, England", position: "Main Card", division: "Heavyweight", blue: "Greg Earl", red: "Juan Ramos", winner: "Greg Earl", loser: "Juan Ramos", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "" },
         { id: "UPJFC002-1", event: "UPJFC002", position: "Main Event", division: "Heavyweight", blue: "Morrese Towns", red: "Damon Wolfe", winner: "Morrese Towns", loser: "Damon Wolfe", condition: "Decision", finish: "Decision", round: 5, time: "5:00", status: "Completed", note: "" },
         { id: "UPJFC002-2", event: "UPJFC002", position: "Main Card", division: "Heavyweight", blue: "Aaron Sutton", red: "Devon Sutton", winner: "Aaron Sutton", loser: "Devon Sutton", condition: "KO/TKO", finish: "Strikes", round: 1, time: "4:49", status: "Completed", note: "Performance of the Night, KO" },
         { id: "UPJFC002-3", event: "UPJFC002", position: "Main Card", division: "Light Heavyweight", blue: "Quincy Jackson", red: "Kenneth Ramey", winner: "Quincy Jackson", loser: "Kenneth Ramey", condition: "Decision", finish: "Decision", round: 3, time: "5:00", status: "Completed", note: "Fight of the Night" },
@@ -2077,17 +2090,20 @@
         : UPJFC_DATA.rankings[0];
       const leader = ranked || UPJFC_DATA.rankings[0];
       const profile = fighterProfile(leader.fighter);
-      const signatureWin = UPJFC_DATA.matches.find((match) => match.winner === leader.fighter);
+      const latestAppearance = completedMatches().find((match) =>
+        match.winner === leader.fighter || match.loser === leader.fighter);
       const style = profile ? `${profile.archetype} with a ${profile.subArchetype} approach` : leader.className;
-      const resultLine = signatureWin
-        ? `His latest statement came against ${signatureWin.loser}, ending by ${signatureWin.finish || signatureWin.condition} in round ${signatureWin.round} at ${signatureWin.time}.`
+      const resultLine = latestAppearance
+        ? latestAppearance.winner === leader.fighter
+          ? `His latest statement came against ${latestAppearance.loser}, ending by ${displayFinish(latestAppearance)}${resultTiming(latestAppearance)}.`
+          : `His latest appearance came against ${latestAppearance.winner}, a result that tightened the top of the rankings without taking away his Pound For Pound title.`
         : "He currently owns the strongest overall power score in the league.";
 
       document.querySelector("#p4p-feature").innerHTML = `
         <div>
           <span class="feature-label">Pound For Pound Champion</span>
           <h3>${esc(leader.fighter)}</h3>
-          <p class="feature-deck">${esc(leader.fighter)} sets the early UPJFC standard as a ${esc(style)}. A ${esc(leader.record)} record, ${esc(leader.finishPct)} finish rate, and ${esc(leader.power.toFixed(1))} power score put him at the front of the league after two events.</p>
+          <p class="feature-deck">${esc(leader.fighter)} sets the UPJFC standard as a ${esc(style)}. A ${esc(leader.record)} record, ${esc(leader.finishPct)} finish rate, and ${esc(leader.power.toFixed(1))} power score keep him in the title picture after the London card and Stand and Bang 1.</p>
           <p class="feature-deck" style="margin-top:16px">${esc(resultLine)}</p>
         </div>
         <div class="feature-stats">
@@ -2120,19 +2136,19 @@
     function renderStories() {
       const stories = [
         {
-          label: "Main Event Recaps",
-          headline: "Morrese Towns delivers when the lights are brightest",
-          body: "Morrese Towns defeated Damon Wolfe in his second fight by Unanimous Decision after defeating Eric Lugo by Submission in round 2 at 2:47 in his first fight. The results immediately shaped the top of the UPJFC rankings."
+          label: "Tournament Crown",
+          headline: "Buren Wilder Jr turns Stand and Bang 1 into a takeover",
+          body: "Buren Wilder Jr ran through Eric Lugo, Allen Risner, and Terrance Thomas to win Stand and Bang 1. The tournament pushed him to 4-0, gave him three knockout wins, and moved him to the top of the UPJFC power rankings."
         },
         {
-          label: "Breakout Performance",
-          headline: "Terrance Thomas turns a finish into the night's biggest leap",
-          body: "Terrance Thomas defeated Tyree Long by KO/TKO in round 3 at 2:56. The finish and Fight of the Night / Performance of the Night, KO pushed another name into the rankings picture."
+          label: "London Main Event",
+          headline: "Jonathan Servin closes UPJFC003 with a late finish",
+          body: "Jonathan Servin stopped Eric Lugo by KO/TKO in round 4 at 4:18 at The O2. The Performance of the Night KO gave Servin a clean rebound and added another light heavyweight name to watch."
         },
         {
-          label: "Power Rankings Lens",
-          headline: "Seven scorecards reveal the league's control artists",
-          body: "Troy Goodwin, Sean Bies, Buren Wilder Jr, Quincy Jackson, Saman Khoshbin, and Kyree Brammer earned wins on the scorecards while Morrese Towns added a five-round main event decision. Those results built the middle of the rankings and created an early group of unbeaten contenders."
+          label: "Rankings Pressure",
+          headline: "The top five finally has a real argument",
+          body: "Terrance Thomas still holds the Pound For Pound title, but Buren Wilder Jr owns the hottest record. Allen Risner, Morrese Towns, and Quincy Jackson round out a top five that now has finishes, decisions, tournament pressure, and unfinished business."
         }
       ];
 
@@ -2169,6 +2185,12 @@
       const mainEvent = group.matches.find((match) => match.position === "Main Event") || group.matches[0];
       const finishCount = group.matches.filter((match) => !/Decision/i.test(match.condition)).length;
       const awardWinners = group.matches.filter((match) => match.note).map((match) => `${match.winner} (${match.note})`);
+      if (group.event === "UPJFC004") {
+        return `Stand and Bang 1 was Buren Wilder Jr's breakout night. He beat Eric Lugo in the opening round, put away Allen Risner in the semifinal, and finished Terrance Thomas in the final to leave as tournament champion and the hottest fighter in the league.`;
+      }
+      if (group.event === "UPJFC003") {
+        return `${group.event} took UPJFC to The O2 and gave the league a sharp five-fight update. Jonathan Servin closed the night with a fourth-round knockout, Allen Risner won the Fight of the Night, and Jimmy Sanchez added a late-round finish.`;
+      }
       if (group.event === "UPJFC002") {
         return `${group.event} sharpened the league picture. ${mainEvent.winner} handled main-event pressure over ${mainEvent.round} rounds, Aaron Sutton added a fast heavyweight finish, and Quincy Jackson's light heavyweight win gave the card its hardest-fought spotlight.`;
       }
@@ -2251,7 +2273,7 @@
       const decision = /decision/i.test(`${match.condition || ""} ${match.finish || ""}`);
       return decision
         ? `${winner} defeated ${loser} by ${method} after ${esc(match.round)} rounds.`
-        : `${winner} defeated ${loser} by ${esc(displayFinish(match))} in round ${esc(match.round)} at ${esc(match.time)}.`;
+        : `${winner} defeated ${loser} by ${esc(displayFinish(match))}${esc(resultTiming(match))}.`;
     }
 
     function plainResultRecap(match) {
@@ -2259,11 +2281,19 @@
       const decision = /decision/i.test(`${match.condition || ""} ${match.finish || ""}`);
       return decision
         ? `${match.winner} defeated ${match.loser} by ${method} after ${match.round} rounds.`
-        : `${match.winner} defeated ${match.loser} by ${displayFinish(match)} in round ${match.round} at ${match.time}.`;
+        : `${match.winner} defeated ${match.loser} by ${displayFinish(match)}${resultTiming(match)}.`;
     }
 
     function displayFinish(match) {
       return /KO|TKO/i.test(match.condition || "") ? match.condition : (match.finish || match.condition);
+    }
+
+    function resultTiming(match) {
+      const hasRound = match.round && match.round !== "-";
+      const hasTime = match.time && match.time !== "-";
+      if (hasRound && hasTime) return ` in round ${match.round} at ${match.time}`;
+      if (hasRound) return ` in round ${match.round}`;
+      return "";
     }
 
     function renderAll() {
@@ -2415,7 +2445,7 @@
           sheetIsCurrent ? "live" : "fallback",
           sheetIsCurrent
             ? `Live Google Sheets data - refreshed ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`
-            : "Google Sheets loaded; showing saved UPJFC002 snapshot until the sheet catches up"
+            : "Google Sheets loaded; showing the saved latest snapshot until the sheet catches up"
         );
       } catch (error) {
         if (!hasLiveData) {
